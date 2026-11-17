@@ -1,0 +1,123 @@
+// AMS (Accounting Management System) Custom Styles
+
+:root {
+  --ams-purple-gradient: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+  --ams-blue-gradient: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  --ams-green-gradient: linear-gradient(135deg, #059669 0%, #047857 100%);
+  --ams-danger-gradient: linear-gradient(135deg, #e11d48 0%, #be123c 100%);
+  --ams-card-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05), 0 2px 8px -1px rgba(0, 0, 0, 0.03);
+  --ams-hover-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.03);
+  --ams-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ams-stat-card {
+  transition: var(--ams-transition);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  box-shadow: var(--ams-card-shadow);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: transparent;
+    transition: var(--ams-transition);
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--ams-hover-shadow);
+
+    &::before {
+      background: var(--ams-purple-gradient);
+    }
+  }
+
+  &.border-danger-hover:hover::before {
+    background: var(--ams-danger-gradient);
+  }
+
+  &.border-success-hover:hover::before {
+    background: var(--ams-green-gradient);
+  }
+}
+
+.ams-gradient-banner {
+  background: var(--ams-purple-gradient);
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 25px -5px rgba(79, 70, 229, 0.3);
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    top: -50px;
+    right: -50px;
+    pointer-events: none;
+  }
+}
+
+.ams-table-container {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+
+  table {
+    margin-bottom: 0;
+    
+    th {
+      background-color: rgba(0,0,0,0.02);
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.5px;
+      padding: 12px 16px;
+    }
+
+    td {
+      padding: 14px 16px;
+    }
+  }
+}
+
+.dark {
+  .ams-stat-card {
+    border-color: rgba(255, 255, 255, 0.06);
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.3);
+
+    &:hover {
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
+    }
+  }
+
+  .ams-table-container {
+    border-color: rgba(255, 255, 255, 0.08);
+
+    table {
+      th {
+        background-color: rgba(255, 255, 255, 0.03);
+      }
+    }
+  }
+}
+
+// Custom animations
+@keyframes amsPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+.ams-pulse-effect {
+  animation: amsPulse 2s infinite ease-in-out;
+}

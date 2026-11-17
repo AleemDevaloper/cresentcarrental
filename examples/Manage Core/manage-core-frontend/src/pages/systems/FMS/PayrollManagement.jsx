@@ -1,0 +1,153 @@
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faUsers, faDollarSign, faClock, faCheckCircle,
+  faExclamationTriangle, faChartLine, faBuilding,
+  faWallet, faFileInvoiceDollar, faCalculator,
+  faSearch, faFilter, faPlus, faArrowRight,
+  faShieldAlt, faHistory, faUserShield, faLock,
+  faGlobe, faChartPie, faCalendarAlt, faBan
+} from '@fortawesome/free-solid-svg-icons';
+import {
+  Chart as ChartJS, CategoryScale, LinearScale, PointElement,
+  LineElement, BarElement, ArcElement, Title, Tooltip, Legend, Filler
+} from 'chart.js';
+import { Line, Bar, Doughnut } from 'react-chartjs-2';
+import { getTabData } from '../../../api/fms';
+
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, ArcElement, Title, Tooltip, Legend, Filler);
+
+const PayrollManagement = ({ isDark }) => {
+  const [activeTab, setActiveTab] = useState('overview');
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const [metrics, setMetrics] = useState([]);
+  const [payrollRuns, setPayrollRuns] = useState([]);
+  const [deptCostData, setDeptCostData] = useState({ labels: [], datasets: [] });
+  const [salaryComponentData, setSalaryComponentData] = useState({ labels: [], datasets: [] });
+
+  useEffect(() => {
+    getTabData('payroll-management').then(res => {
+      const d = res.data?.data || {};
+      setMetrics(d.metrics || []);
+      setPayrollRuns(d.payrollRuns || []);
+      setDeptCostData(d.deptCostData || { labels: [], datasets: [] });
+      setSalaryComponentData(d.salaryComponentData || { labels: [], datasets: [] });
+    }).catch(() => {});
+  }, []);
+
+  const renderOverview = () => (
+    <div className="space-y-4">
+      <div className="row g-3">{metrics.map((m, i) => (
+        <div className="col-xl-2 col-lg-4 col-md-6" key={i}>
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05 }}
+            className={`card border-0 shadow-sm p-3 rounded-4 h-100 ${isDark ? 'bg-dark-card border-white border-opacity-5' : 'bg-white'}`}>
+            <div className="d-flex align-items-center gap-2 mb-2">
+              <div className="rounded-3 p-2" style={{ backgroundColor: `${m.color}15` }}><FontAwesomeIcon icon={m.icon} style={{ color: m.color }} /></div>
+              <span className="text-muted small fw-bold text-uppercase" style={{ fontSize: '10px' }}>{m.label}</span>
+            </div>
+            <h4 className="fw-black mb-0">{m.value}</h4>
+            <small className={`fw-bold ${m.trend === 'up' ? 'text-success' : 'text-danger'}`}><FontAwesomeIcon icon={m.trend === 'up' ? faChartLine : faClock} className="me-1" />{m.delta}</small>
+          </motion.div>
+        </div>
+      ))}</div>
+      <div className="row g-4">
+        <div className="col-lg-8">
+          <div className={`card border-0 shadow-sm p-4 rounded-4 ${isDark ? 'bg-dark-card border-white border-opacity-5' : 'bg-white'}`}>
+            <h5 className="fw-bold mb-4">Department Payroll Cost</h5>
+            <div style={{ height: '280px' }}><Bar data={deptCostData} options={{ responsive: true, maintainAspectRatio: false, indexAxis: 'y', plugins: { legend: { display: false } } }} /></div>
+          </div>
+        </div>
+        <div className="col-lg-4">
+          <div className={`card border-0 shadow-sm p-4 rounded-4 h-100 ${isDark ? 'bg-dark-card border-white border-opacity-5' : 'bg-white'}`}>
+            <h5 className="fw-bold mb-4">Salary Component Split</h5>
+            <div style={{ height: '220px' }}><Doughnut data={salaryComponentData} options={{ responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } }, cutout: '60%' }} /></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
+  const renderPayrollRuns = () => (
+    <div className={`card border-0 shadow-sm p-4 rounded-4 ${isDark ? 'bg-dark-card border-white border-opacity-5' : 'bg-white'}`}>
+      <div className="d-flex justify-content-between align-items-center mb-4">
+        <h5 className="fw-bold mb-0">Payroll Processing History</h5>
+        <div className="d-flex gap-2">
+          <button className="btn btn-outline-secondary rounded-pill px-3"><FontAwesomeIcon icon={faFilter} className="me-1" /> Filter</button>
+          <button className="btn btn-primary rounded-pill px-3"><FontAwesomeIcon icon={faPlus} /> New Run</button>
+        </div>
+      </div>
+      <div className="table-responsive">
+        <table className="table align-middle mb-0">
+          <thead className="small text-muted uppercase tracking-wider">
+            <tr><th className="py-3">Run ID</th><th>Period</th><th>Employees</th><th>Gross Pay</th><th>Net Pay</th><th>Deductions</th><th>Date</th><th className="text-end">Status</th></tr>
+          </thead>
+          <tbody>{payrollRuns.map((r, i) => (
+            <tr key={i} className="border-bottom">
+              <td className="py-3 font-monospace small fw-bold">{r.id}</td>
+              <td>{r.period}</td>
+              <td>{r.employees}</td>
+              <td className="fw-bold">{r.gross}</td>
+              <td className="fw-bold">{r.net}</td>
+              <td className="small text-danger">{r.deductions}</td>
+              <td className="small">{r.date}</td>
+              <td className="text-end">
+                <span className={`badge bg-${r.status === 'Completed' ? 'success' : 'info'} bg-opacity-10 text-${r.status === 'Completed' ? 'success' : 'info'} px-3 py-1.5 rounded-pill`}>{r.status}</span>
+              </td>
+            </tr>
+          ))}</tbody>
+        </table>
+      </div>
+    </div>
+  );
+
+  const renderEnterprise = () => (
+    <div className="row g-4">
+      {[
+        { title: 'Payroll Locking', desc: 'Lock completed payroll periods to prevent unauthorized changes', icon: faLock, color: 'primary' },
+        { title: 'Audit Trail', desc: 'Complete audit trail of all payroll changes and approvals', icon: faHistory, color: 'success' },
+        { title: 'Payroll Reversal', desc: 'Ability to reverse and reprocess payroll runs', icon: faBan, color: 'warning' },
+        { title: 'Version History', desc: 'Track all versions of payroll configurations and runs', icon: faFileInvoiceDollar, color: 'info' },
+        { title: 'Multi-Country Payroll', desc: 'Handle payroll across multiple countries and tax jurisdictions', icon: faGlobe, color: 'danger' },
+        { title: 'Role-Based Access', desc: 'Granular permissions for payroll processing and reporting', icon: faUserShield, color: 'secondary' },
+      ].map((f, i) => (
+        <div className="col-md-4" key={i}>
+          <div className={`card border-0 shadow-sm p-4 rounded-4 h-100 ${isDark ? 'bg-dark-card border-white border-opacity-5' : 'bg-white'}`}>
+            <div className={`rounded-3 p-2 d-inline-flex mb-3 bg-${f.color} bg-opacity-10 text-${f.color}`}><FontAwesomeIcon icon={f.icon} className="fs-4" /></div>
+            <h5 className="fw-bold">{f.title}</h5>
+            <p className="text-muted small mb-0">{f.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+
+  const subTabs = [
+    { id: 'overview', label: 'Dashboard', icon: faChartLine },
+    { id: 'runs', label: 'Payroll Runs', icon: faDollarSign },
+    { id: 'enterprise', label: 'Enterprise', icon: faShieldAlt },
+  ];
+
+  return (
+    <div className={isDark ? 'text-white' : 'text-dark'}>
+      <div className="d-flex flex-wrap gap-2 mb-4 border-bottom pb-3">
+        {subTabs.map(tab => (
+          <button key={tab.id} onClick={() => setActiveTab(tab.id)}
+            className={`btn btn-sm rounded-pill px-4 fw-bold ${activeTab === tab.id ? 'btn-primary shadow-sm' : 'btn-outline-secondary bg-transparent border-0 text-muted'}`}>
+            <FontAwesomeIcon icon={tab.icon} className="me-2" />{tab.label}
+          </button>
+        ))}
+      </div>
+      <AnimatePresence mode="wait">
+        <motion.div key={activeTab} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}>
+          {activeTab === 'overview' && renderOverview()}
+          {activeTab === 'runs' && renderPayrollRuns()}
+          {activeTab === 'enterprise' && renderEnterprise()}
+        </motion.div>
+      </AnimatePresence>
+    </div>
+  );
+};
+
+export default PayrollManagement;

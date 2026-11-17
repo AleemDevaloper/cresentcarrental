@@ -1,0 +1,15 @@
+/* Google Fonts loaded in index.html — Space Grotesk + Urbanist */
+.mc-root {
+  --font: "Urbanist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --display: "Space Grotesk", var(--font);
+}
+
+html[data-site="marketing"] body {
+  margin: 0;
+  background: #edf1f5;
+  font-family: var(--font);
+}
+
+html[data-site="marketing"].mc-site-dark body {
+  background: #15151b;
+}

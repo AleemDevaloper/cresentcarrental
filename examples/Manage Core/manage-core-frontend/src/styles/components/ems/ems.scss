@@ -1,0 +1,43 @@
+@import './_ems-layout.scss';
+@import './_ems-navbar.scss';
+@import './_ems-sidebar.scss';
+@import './_ems-cards.scss';
+
+/* Utility helpers for EMS only */
+.ems-utility-row { display:flex; gap:1rem; align-items:center; }
+.ems-muted { color: $text-secondary; font-size: $small-size; }
+
+/* Apply EMS card look to existing .card elements inside EMS pages */
+.ems-root .card {
+  background: var(--card-bg);
+  border: 1px solid $border;
+  border-radius: $radius-lg !important;
+  box-shadow: $shadow;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.ems-root .card:hover {
+  transform: translateY(-6px);
+  box-shadow: $shadow-lg;
+}
+
+/* Premium buttons */
+.ems-root .premium-btn-primary {
+  @include button-primary;
+  border-radius: 12px;
+}
+.ems-root .premium-btn-outline {
+  @include button-secondary;
+  border-radius: 12px;
+}
+
+/* Premium inputs */
+.ems-root .premium-input, .ems-root .premium-select {
+  @include input-beautiful;
+  border-radius: 10px;
+}
+
+/* Quick action button style */
+.ems-root .premium-quick-action {
+  @include card-beautiful;
+  padding: 1rem;
+}

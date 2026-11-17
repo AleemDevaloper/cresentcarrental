@@ -1,0 +1,111 @@
+// Custom Bootstrap overrides
+
+// Override Bootstrap variables
+$primary: #2828e2;
+$secondary: #373a9e;
+$light: #F9FAFB;
+$white: #FFFFFF;
+$dark: #111827;
+$gray-600: #6B7280;
+$border-color: #E5E7EB;
+$success: #10B981;
+$danger: #EF4444;
+
+// Typography
+$font-family-sans-serif: 'Inter', sans-serif;
+$font-family-base: $font-family-sans-serif;
+
+// Headings
+$h1-font-size: 1.75rem;
+$h2-font-size: 1.375rem;
+$h3-font-size: 1.125rem;
+$font-size-base: 0.875rem;
+$small-font-size: 0.75rem;
+
+// Import Bootstrap
+@import 'bootstrap/scss/bootstrap';
+
+// Custom heading font
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', sans-serif;
+}
+
+// =========================================================
+// Recent Tasks scroll area — polished themed scrollbar
+// =========================================================
+.custom-work-queue-scroll {
+  scroll-behavior: smooth;
+  scrollbar-width: thin; // Firefox
+  scrollbar-color: rgba(79, 70, 229, 0.35) transparent; // Firefox (thumb track)
+  overscroll-behavior: contain;
+  transition: scrollbar-color 0.3s ease;
+}
+
+// WebKit / Blink (Chrome, Edge, Safari, Opera)
+.custom-work-queue-scroll::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.custom-work-queue-scroll::-webkit-scrollbar-track {
+  background: transparent;
+  margin: 4px 0;
+}
+
+.custom-work-queue-scroll::-webkit-scrollbar-thumb {
+  background: rgba(79, 70, 229, 0.28);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+  transition: background 0.25s ease;
+}
+
+.custom-work-queue-scroll:hover::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #6366f1, #4f46e5);
+  background-clip: content-box;
+}
+
+.custom-work-queue-scroll::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #7c3aed, #4f46e5);
+  background-clip: content-box;
+}
+
+.custom-work-queue-scroll::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+// Dark mode scrollbar tuning
+.dark-mode .custom-work-queue-scroll {
+  scrollbar-color: rgba(167, 139, 250, 0.4) transparent;
+}
+
+.dark-mode .custom-work-queue-scroll::-webkit-scrollbar-thumb {
+  background: rgba(167, 139, 250, 0.32);
+  background-clip: content-box;
+}
+
+.dark-mode .custom-work-queue-scroll:hover::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #a78bfa, #6366f1);
+  background-clip: content-box;
+}
+
+// Hide scrollbar affordance until hover for a cleaner look (still scrollable)
+@media (hover: hover) {
+  .custom-work-queue-scroll {
+    scrollbar-width: none;
+  }
+  .custom-work-queue-scroll::-webkit-scrollbar {
+    width: 0;
+  }
+  .custom-work-queue-scroll:hover {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(79, 70, 229, 0.35) transparent;
+  }
+  .custom-work-queue-scroll:hover::-webkit-scrollbar {
+    width: 8px;
+  }
+}
+
+
+
+

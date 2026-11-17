@@ -1,0 +1,31 @@
+HTTrack3.50-0 launched on Tue, 22 Sep 2026 14:49:35 at https://motors.stylemixthemes.com/elementor-dealer-one/home-page-three/ +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar
+(winhttrack -qwC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2%f#f -F "Mozilla/5.0 (compatible; HTTrack; +https://www.httrack.com/)" -%F "<!-- Mirrored from {url} by HTTrack Website Copier/3.x [XR&CO], {date} -->" -%l "en, *" https://motors.stylemixthemes.com/elementor-dealer-one/home-page-three/ -O1 "C:\Users\Asian\Desktop\Cresent Car rental\examples\Motors2" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+14:53:20	Error: 	"Not Found" (404) at link https://motors.stylemixthemes.com/elementor-dealer-one/wp-content/plugins/motors-car-dealership-classified-listings/assets/css/frontend/owl.video.play.png (from https://motors.stylemixthemes.com/elementor-dealer-one/wp-content/cache/autoptimize/22/css/autoptimize_ec7d52384b7629c630d632bc06673006.css)
+14:53:22	Error: 	"Not Found" (404) at link https://motors.stylemixthemes.com/elementor-dealer-one/home-page-three/dummy.png (from https://motors.stylemixthemes.com/elementor-dealer-one/wp-content/plugins/revslider/sr6/assets/js/rs6.min.js?ver=6.7.21)
+14:53:22	Warning: 	Moved Permanently for https://motors.stylemixthemes.com/elementor-dealer-one/home-page-three/origin=https://
+14:53:22	Warning: 	Redirect to a same-file alias, fetching real content: https://motors.stylemixthemes.com/elementor-dealer-one/home-page-three/origin=https:// -> https://motors.stylemixthemes.com/elementor-dealer-one/home-page-three/origin=https:/
+14:53:22	Warning: 	Warning moved treated for https://motors.stylemixthemes.com/elementor-dealer-one/home-page-three/origin=https:// (real one is https://motors.stylemixthemes.com/elementor-dealer-one/home-page-three/origin=https:/)
+14:53:26	Error: 	"Not Found" (404) at link https://motors.stylemixthemes.com/elementor-dealer-one/home-page-three/matomo.php (from https://analytics.wpmucdn.com/matomo.js)
+14:53:26	Error: 	"Not Found" (404) at link https://motors.stylemixthemes.com/elementor-dealer-one/home-page-three/piwik.php (from https://analytics.wpmucdn.com/matomo.js)
+14:53:26	Warning: 	Moved Permanently for https://motors.stylemixthemes.com/elementor-dealer-one/home-page-three/^file://
+14:53:26	Warning: 	File has moved from https://motors.stylemixthemes.com/elementor-dealer-one/home-page-three/^file:// to https://motors.stylemixthemes.com/elementor-dealer-one/home-page-three/file:/
+14:53:26	Error: 	"Not Found" (404) at link https://motors.stylemixthemes.com/elementor-dealer-one/home-page-three/$(this.form (from https://motors.stylemixthemes.com/elementor-dealer-one/wp-content/plugins/motors-car-dealership-classified-listings/assets/js/frontend/filter.js?ver=1.4.123)
+14:53:26	Error: 	"Forbidden" (403) at link https://motors.stylemixthemes.com/elementor-dealer-one/home-page-three/window.location.href (from https://motors.stylemixthemes.com/elementor-dealer-one/wp-content/plugins/motors-car-dealership-classified-listings/assets/js/frontend/filter.js?ver=1.4.123)
+14:53:26	Error: 	"Not Found" (404) at link https://motors.stylemixthemes.com/elementor-dealer-one/home-page-three/$(event.target (from https://motors.stylemixthemes.com/elementor-dealer-one/wp-content/plugins/motors-car-dealership-classified-listings/assets/js/frontend/filter.js?ver=1.4.123)
+14:53:26	Error: 	"Not Found" (404) at link https://motors.stylemixthemes.com/elementor-dealer-one/home-page-three/typeahead.js (from https://motors.stylemixthemes.com/elementor-dealer-one/wp-content/themes/motors/assets/js/typeahead.jquery.min.js?ver=5.6.54)
+14:53:26	Error: 	"Not Found" (404) at link https://motors.stylemixthemes.com/elementor-dealer-one/home-page-three/url (from https://motors.stylemixthemes.com/elementor-dealer-one/wp-content/themes/motors/assets/js/filter.js?ver=5.6.54)
+14:53:26	Error: 	"Not Found" (404) at link https://motors.stylemixthemes.com/elementor-dealer-one/home-page-three/e (from https://motors.stylemixthemes.com/elementor-dealer-one/wp-content/plugins/elementor/assets/lib/swiper/v8/swiper.min.js?ver=8.4.5)
+14:53:26	Error: 	"Not Found" (404) at link https://motors.stylemixthemes.com/elementor-dealer-one/home-page-three/t.params.url (from https://motors.stylemixthemes.com/elementor-dealer-one/wp-content/plugins/elementor/assets/lib/swiper/v8/swiper.min.js?ver=8.4.5)
+14:53:26	Error: 	"Not Found" (404) at link https://motors.stylemixthemes.com/elementor-dealer-one/home-page-three/OPR/ (from https://motors.stylemixthemes.com/elementor-dealer-one/wp-content/plugins/elementor/assets/js/frontend.min.js?ver=4.1.4)
+14:53:26	Error: 	"Not Found" (404) at link https://motors.stylemixthemes.com/elementor-dealer-one/home-page-three/x[Z6(L0.i4 (from https://motors.stylemixthemes.com/cdn-cgi/challenge-platform/h/g/scripts/jsd/330e41bb475c/main.js?)
+14:53:26	Error: 	"Not Found" (404) at link https://motors.stylemixthemes.com/elementor-dealer-one/home-page-three/origin=https:/ (from https://motors.stylemixthemes.com/elementor-dealer-one/wp-content/plugins/revslider/sr6/assets/js/rs6.min.js?ver=6.7.21)
+14:53:28	Error: 	"Not Found" (404) at link https://motors.stylemixthemes.com/elementor-dealer-one/home-page-three/file:/ (from https://motors.stylemixthemes.com/elementor-dealer-one/home-page-three/^file://)
+
+HTTrack Website Copier/3.50-0 mirror complete in 3 minutes 53 seconds : 780 links scanned, 761 files written (47721883 bytes overall) [44129498 bytes received at 189396 bytes/sec], 6381997 bytes transferred using HTTP compression in 87 files, ratio 18%, 29.1 requests per connection
+(15 errors, 5 warnings, 0 messages)

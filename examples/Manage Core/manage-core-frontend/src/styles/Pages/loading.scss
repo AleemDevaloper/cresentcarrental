@@ -1,0 +1,248 @@
+// --- Premium Loading Screen ---
+@keyframes loading-logo-reveal {
+  0% { opacity: 0; transform: scale(0.6) rotate(-10deg); filter: blur(8px); }
+  100% { opacity: 1; transform: scale(1) rotate(0); filter: blur(0); }
+}
+
+@keyframes loading-ring-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes loading-ring-pulse {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.05); }
+}
+
+@keyframes loading-dot-bounce {
+  0%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-12px); }
+}
+
+@keyframes loading-progress {
+  0% { width: 0%; }
+  50% { width: 65%; }
+  100% { width: 100%; }
+}
+
+@keyframes loading-particle-drift {
+  0% { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(-200px) translateX(100px) scale(0.5); opacity: 0; }
+}
+
+@keyframes loading-text-glitch {
+  0%, 100% { opacity: 1; transform: translateX(0); }
+  25% { opacity: 0.8; transform: translateX(-2px); }
+  75% { opacity: 0.9; transform: translateX(2px); }
+}
+
+@keyframes loading-fade-out {
+  to { opacity: 0; transform: scale(0.95); }
+}
+
+#enter {
+  cursor: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background: #f8fafc;
+  position: relative;
+  overflow: hidden;
+
+  // Ambient gradient background
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 30%, rgba(79, 70, 229, 0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 70%, rgba(16, 185, 129, 0.04) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, rgba(99, 102, 241, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  // Floating gradient ring
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 320px;
+    height: 320px;
+    margin: -160px 0 0 -160px;
+    border-radius: 50%;
+    background: conic-gradient(
+      from 0deg,
+      transparent,
+      rgba(79, 70, 229, 0.06),
+      rgba(99, 102, 241, 0.1),
+      rgba(79, 70, 229, 0.06),
+      transparent
+    );
+    animation: loading-ring-spin 4s linear infinite;
+    pointer-events: none;
+  }
+
+  // Loading container
+  .loading-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+
+    // Logo with ring wrapper
+    .loading-logo-wrap {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: loading-logo-reveal 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+      // Gradient ring border
+      &::before {
+        content: '';
+        position: absolute;
+        inset: -4px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #4f46e5, #818cf8, #22d3ee, #4f46e5);
+        background-size: 300% 300%;
+        animation: loading-ring-spin 3s linear infinite, gradient-border 4s ease infinite;
+        z-index: -1;
+      }
+
+      // Inner ring glow
+      &::after {
+        content: '';
+        position: absolute;
+        inset: 8px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.5);
+        z-index: -1;
+      }
+
+      img {
+        width: 80px;
+        height: auto;
+        object-fit: contain;
+        border-radius: 50%;
+        position: relative;
+        z-index: 1;
+      }
+    }
+
+    // Loading text with dots animation
+    .loading-text {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'Inter', sans-serif;
+
+      .loading-label {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: #475569;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+      }
+
+      .loading-dots {
+        display: inline-flex;
+        gap: 4px;
+
+        span {
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background: #4f46e5;
+          animation: loading-dot-bounce 1.4s ease-in-out infinite both;
+
+          &:nth-child(1) { animation-delay: 0s; }
+          &:nth-child(2) { animation-delay: 0.16s; }
+          &:nth-child(3) { animation-delay: 0.32s; }
+        }
+      }
+    }
+
+    // Progress bar
+    .loading-progress-track {
+      width: 200px;
+      height: 3px;
+      background: rgba(79, 70, 229, 0.08);
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+
+      .loading-progress-bar {
+        height: 100%;
+        width: 0%;
+        background: linear-gradient(90deg, #4f46e5, #818cf8, #22d3ee);
+        background-size: 200% 100%;
+        border-radius: 4px;
+        animation: loading-progress 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards, shimmer 2s linear infinite;
+      }
+    }
+  }
+
+  // Floating particles
+  .loading-particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: rgba(79, 70, 229, 0.12);
+    pointer-events: none;
+    z-index: 1;
+    animation: loading-particle-drift 5s ease-in-out infinite;
+  }
+}
+
+// --- Dark Mode ---
+.dark-mode #enter {
+  background: #080c16;
+
+  &::before {
+    background:
+      radial-gradient(ellipse at 20% 30%, rgba(79, 70, 229, 0.1) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 70%, rgba(16, 185, 129, 0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, rgba(99, 102, 241, 0.05) 0%, transparent 50%);
+  }
+
+  &::after {
+    background: conic-gradient(
+      from 0deg,
+      transparent,
+      rgba(99, 102, 241, 0.1),
+      rgba(129, 140, 248, 0.15),
+      rgba(99, 102, 241, 0.1),
+      transparent
+    );
+  }
+
+  .loading-content {
+    .loading-logo-wrap {
+      &::after {
+        background: rgba(15, 23, 42, 0.6);
+      }
+    }
+
+    .loading-text .loading-label {
+      color: #94a3b8;
+    }
+
+    .loading-progress-track {
+      background: rgba(99, 102, 241, 0.08);
+    }
+  }
+
+  .loading-particle {
+    background: rgba(99, 102, 241, 0.15);
+  }
+}

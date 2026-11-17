@@ -1,0 +1,76 @@
+// Main SCSS file
+
+@import 'theme';
+@import 'variables';
+@import 'mixins';
+
+// Bootstrap base + components
+@import 'bootstrap/scss/bootstrap';
+
+@import 'reset';
+@import 'global';
+@import 'dialogs';
+@import './Pages/sidebar.scss';
+@import './Pages/login.scss';
+@import './Pages/ams.scss';
+@import './Pages/pos.scss';
+
+// EMS-specific component styles (scoped under .ems-root)
+@import './components/ems/ems.scss';
+@import './components/skeleton.scss';
+@import './mobile-responsive';
+
+
+.react-flow__panel.right{
+  display: none !important;
+}
+
+
+// ======================
+// top nav bar setting 
+// ======================
+
+.accdrop{
+  top: 100%;
+  right: 0;
+}
+.not-drop{
+   position: absolute !important;
+  margin-top: 10px !important;
+  top: 100%;
+  right: 0;
+  height: 300px;
+  overflow-y: scroll;
+  background: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.notification {
+  position: relative;
+}
+.dropdown-menu.show{
+  margin-top: 15px;
+}
+.badgenotfication {
+  position: absolute;
+  top: -5px;
+  right: -8px;
+  background: rgb(80, 80, 255);
+  color: white;
+  border-radius: 50%;
+  font-size: 10px;
+  padding: 3px 6px;
+}
+
+.notfi-dropdown {
+  position: absolute;
+  top: 30px;
+  right: 0;
+  width: 260px;
+  background: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  display: none;
+}
+
+.notification:hover .notfi-dropdown {
+  display: block;
+}

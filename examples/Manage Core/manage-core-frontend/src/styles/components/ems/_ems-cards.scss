@@ -1,0 +1,32 @@
+﻿/* EMS card components: clean, elevated, and focused for data */
+.ems-card {
+  background: var(--card-bg);
+  border: 1px solid $border;
+  border-radius: $radius-lg;
+  padding: 1rem;
+  box-shadow: $shadow;
+  transition: transform $transition, box-shadow $transition;
+}
+
+.ems-card:hover {
+  transform: translateY(-4px);
+  box-shadow: $shadow-lg;
+}
+
+.ems-card .card-title {
+  font-family: $font-family-heading;
+  font-size: $h3-size;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.ems-card .card-actions { display:flex; gap:0.5rem; align-items:center; }
+
+.ems-kpi {
+  display:flex;
+  gap:1rem;
+  align-items:center;
+}
+
+.ems-kpi .value { font-size: 1.5rem; font-weight: 700; }
+.ems-kpi .label { color: $text-secondary; }

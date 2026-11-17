@@ -1,0 +1,31 @@
+﻿/* EMS layout tokens and wrappers - scoped to .ems-root to avoid global impact */
+.ems-root {
+  --ems-container-width: 1200px;
+  --ems-gap: 1rem;
+  --ems-sidebar-width: 260px;
+  --ems-topbar-height: 68px;
+  font-family: $font-family-body;
+  background: var(--background);
+  color: var(--text-primary);
+}
+
+.ems-container {
+  max-width: var(--ems-container-width);
+  margin: 0 auto;
+  padding: 1.25rem;
+}
+
+.ems-grid {
+  display: grid;
+  grid-template-columns: var(--ems-sidebar-width) 1fr;
+  gap: var(--ems-gap);
+}
+
+@media (max-width: 900px) {
+  .ems-grid {
+    grid-template-columns: 1fr;
+  }
+  .ems-sidebar {
+    display: none;
+  }
+}

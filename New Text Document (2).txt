@@ -1,0 +1,1166 @@
+# PREMIUM AUTOMOTIVE WEBSITE TRANSFORMATION
+
+## Crescent Car Rental — React UI/UX, Carousel, Animation & Visual Experience Upgrade
+
+You are a senior frontend architect, premium automotive website designer, React developer, UI/UX specialist, and motion-design engineer.
+
+Your task is to audit and upgrade my existing **Crescent Car Rental website** into a premium, modern, visually impressive, conversion-focused car-rental platform.
+
+The website should feel like a high-end automotive brand website combined with a professional international car-rental booking platform.
+
+The final result must be:
+
+* Premium
+* Elegant
+* Modern
+* Cinematic
+* Responsive
+* Fast
+* Accessible
+* Conversion-focused
+* Professionally animated
+* Consistent across all pages
+* Suitable for a real business
+
+Do not create a basic template website.
+Do not use random animations.
+Do not overload the website with effects.
+Build a cohesive visual experience with purposeful motion and high-quality carousels.
+
+==================================================
+
+## 1. IMPORTANT: AUDIT THE EXISTING PROJECT FIRST
+
+==================================================
+
+Before making any changes, thoroughly inspect the existing codebase.
+
+Analyze:
+
+* React structure
+* Vite configuration, if applicable
+* Existing routes
+* Page components
+* Shared components
+* Existing design system
+* SCSS/Sass/CSS architecture
+* Bootstrap usage
+* Existing animation libraries
+* Existing carousel libraries
+* Image handling
+* Fleet data structure
+* API integrations
+* Booking functionality
+* Responsive layouts
+* Header and footer
+* Admin dashboard
+* Loading and error states
+
+Create an internal implementation plan based on the audit.
+
+Classify existing components as:
+
+1. Keep as they are
+2. Improve visually
+3. Refactor carefully
+4. Replace only if necessary
+5. Build because they are missing
+
+IMPORTANT:
+
+* Do not delete working functionality.
+* Do not create duplicate routes.
+* Do not replace the existing technology stack without a valid reason.
+* Do not hard-code dynamic fleet data if the project already has an API or database.
+* Do not overwrite existing pages unnecessarily.
+* Reuse existing components and design tokens where possible.
+* Preserve existing booking, search, form, authentication, and admin functionality.
+
+First identify the existing project structure and then implement the improvements incrementally.
+
+==================================================
+
+## 2. BRAND AND VISUAL DIRECTION
+
+==================================================
+
+Brand:
+Crescent Car Rental
+
+Business:
+Premium and economy car rental services with availability in:
+
+* Lahore
+* Islamabad
+* Rawalpindi
+* Karachi
+
+Do not imply that Crescent has a physical office in every city unless the business data confirms it.
+
+Visual direction:
+
+* Premium automotive design
+* Black, deep red, white, and cream tones
+* Strong contrast
+* Refined typography
+* High-quality vehicle photography
+* Cinematic visual composition
+* Generous spacing
+* Professional corporate layout
+* Clean and controlled motion
+* Strong but not excessive visual hierarchy
+
+The website should feel closer to a premium automotive experience than a generic car-rental template.
+
+Avoid:
+
+* Excessive gradients
+* Unnecessary neon colors
+* Cartoon-style animations
+* Overuse of glassmorphism
+* Excessive shadows
+* Random floating objects
+* Constant movement
+* Excessive rounded cards
+* Poor-quality stock images
+* Cluttered layouts
+* Unnecessary text animations
+* Distracting background effects
+
+Use motion to guide attention, communicate hierarchy, and improve usability.
+
+==================================================
+
+## 3. CAROUSEL TECHNOLOGY DECISION
+
+==================================================
+
+Inspect the existing project before choosing a carousel library.
+
+If a carousel library already exists, evaluate whether it can support the required features.
+
+If a new library is necessary, select a mature React-compatible option such as:
+
+* Embla Carousel
+* Swiper
+* Keen Slider
+
+Choose the library based on:
+
+* Performance
+* Accessibility
+* Touch and swipe support
+* Responsive behavior
+* Customization
+* Bundle size
+* Existing project compatibility
+* Maintenance and reliability
+
+Do not install multiple carousel libraries for the same purpose.
+
+Use Framer Motion or the project's existing motion system for animations only when appropriate.
+
+Use CSS transitions for simple effects.
+
+Do not use heavy animation libraries for basic hover effects.
+
+Create reusable carousel components instead of implementing every carousel independently.
+
+==================================================
+
+## 4. CREATE A REUSABLE CAROUSEL SYSTEM
+
+==================================================
+
+Build a flexible and reusable React carousel system.
+
+The system should support:
+
+* Desktop navigation arrows
+* Mobile swipe gestures
+* Touch support
+* Keyboard navigation
+* Pagination dots
+* Optional autoplay
+* Pause on hover
+* Pause when the tab is inactive
+* Optional infinite looping
+* Responsive slides per view
+* Custom gap spacing
+* Drag/swipe interaction
+* Active slide state
+* Previous and next controls
+* Accessible labels
+* Loading state
+* Empty state
+* Optional progress indicator
+* Reduced-motion support
+
+Create reusable components similar to:
+
+<PremiumCarousel />
+<CarouselSlide />
+<CarouselControls />
+<CarouselDots />
+<CarouselProgress />
+
+The exact implementation must match the existing project architecture.
+
+Possible conceptual configuration:
+
+* Desktop: 3 slides
+* Tablet: 2 slides
+* Mobile: 1 slide
+* Gap: responsive
+* Autoplay: optional and controlled
+* Loop: configurable
+* Navigation: accessible
+* Animation: smooth and restrained
+
+Do not use autoplay on every carousel. Only use it when it improves the experience.
+
+==================================================
+
+## 5. PREMIUM CAROUSEL TYPES TO IMPLEMENT
+
+==================================================
+
+Implement the carousel types below where they are suitable for the relevant page.
+
+Do not force every carousel type onto every page.
+
+---
+
+## A. PREMIUM FLEET SHOWCASE CAROUSEL
+
+Use on:
+
+* Homepage
+* Our Fleet page
+* Car category pages
+
+Design:
+
+* Center-focused active vehicle
+* Adjacent vehicles partially visible
+* Active card slightly larger than surrounding cards
+* Subtle scale and opacity difference
+* Premium vehicle image presentation
+* Category and vehicle details
+* Price or booking information when available
+* CTA button
+* Smooth drag/swipe interaction
+
+Features:
+
+* Responsive slides
+* Navigation arrows
+* Pagination
+* Optional autoplay
+* Pause on hover
+* Keyboard support
+* Image lazy loading
+* Image fallback
+* Loading state
+* Empty state
+
+Do not distort vehicle images.
+Do not crop important parts of the car.
+Do not show inaccurate vehicle information.
+
+---
+
+## B. 3D PERSPECTIVE VEHICLE CAROUSEL
+
+Use selectively on premium sections.
+
+Design:
+
+* Active vehicle appears in the foreground
+* Adjacent cards use subtle perspective
+* Small scale difference
+* Minimal rotation if visually appropriate
+* Smooth transition between active slides
+
+Rules:
+
+* Keep the effect subtle
+* Do not make the cars appear distorted
+* Do not use excessive 3D rotation
+* Ensure text and buttons remain readable
+* Provide a reduced-motion alternative
+
+The carousel must still be usable on mobile.
+
+---
+
+## C. FULL-WIDTH CINEMATIC HERO CAROUSEL
+
+Create a premium hero carousel for the homepage if the existing hero design benefits from it.
+
+Possible slides:
+
+1. Premium car rental
+2. Airport transfer
+3. Corporate travel
+4. Wedding car rental
+5. Car with driver
+
+Each slide may contain:
+
+* High-quality vehicle image
+* Dark overlay for readability
+* Small eyebrow label
+* Main headline
+* Supporting description
+* Primary CTA
+* Secondary CTA
+* Optional location or service label
+
+Animation:
+
+* Slow image scale
+* Crossfade or controlled slide transition
+* Text fade-up
+* CTA fade-up with a small delay
+* Smooth slide progress
+* No excessive text movement
+
+Important:
+
+* Do not place unreadable text over busy images.
+* Maintain sufficient contrast.
+* Do not rely only on animation to communicate information.
+* Do not use aggressive autoplay.
+* Ensure users can manually navigate the slides.
+
+---
+
+## D. HORIZONTAL VEHICLE SHOWCASE
+
+Create a horizontally scrollable vehicle section when appropriate.
+
+Features:
+
+* Smooth horizontal scrolling
+* Drag interaction on desktop where supported
+* Touch scrolling on mobile
+* Scroll progress indicator
+* Snap alignment
+* Optional arrow controls
+* Vehicle cards with consistent dimensions
+
+Do not hide important content behind difficult interactions.
+
+---
+
+## E. CATEGORY CAROUSEL
+
+Create a category carousel for:
+
+* Luxury Cars
+* Economy Cars
+* SUVs
+* Cars with Driver
+* Airport Transfer
+* Corporate Rental
+* Wedding Rental
+* Long-Term Rental
+
+Each category card should include:
+
+* Relevant image or visual
+* Category name
+* Short description
+* View details link
+* Hover interaction
+* Accessible link or button
+
+Do not use unrelated images for categories.
+
+---
+
+## F. TESTIMONIAL CAROUSEL
+
+Create a professional testimonial carousel.
+
+Features:
+
+* Customer name, if available
+* Review content
+* Rating, if verified and stored
+* Optional customer location
+* Accessible navigation
+* Smooth fade or slide transition
+* Responsive card layout
+
+Do not invent testimonials, customer names, or ratings.
+Use only real data from the CMS or API.
+
+---
+
+## G. LOCATION CAROUSEL
+
+Create a location carousel for:
+
+* Lahore
+* Islamabad
+* Rawalpindi
+* Karachi
+
+Each card should include:
+
+* Location name
+* Relevant image
+* Short service description
+* Link to the location page
+* Available services based on verified business information
+
+Do not claim an office address in a city unless it is confirmed.
+
+---
+
+## H. RELATED CARS CAROUSEL
+
+Use on the car details page.
+
+Display:
+
+* Similar vehicles
+* Same category vehicles
+* Alternative rental options
+* Availability or booking CTA when data is available
+
+Features:
+
+* Responsive layout
+* Consistent card height
+* Dynamic data
+* Proper loading and empty states
+* No duplicated current vehicle where avoidable
+
+---
+
+## I. BLOG AND CONTENT CAROUSEL
+
+Use for:
+
+* Latest blog posts
+* Travel tips
+* Rental guides
+* Business travel content
+* Promotions
+
+Features:
+
+* Dynamic CMS data
+* Image hover effect
+* Category label
+* Publication date
+* Read article CTA
+* Responsive layout
+
+Do not display hard-coded blog posts if the website has a CMS.
+
+==================================================
+
+## 6. PREMIUM CAROUSEL ANIMATIONS
+
+==================================================
+
+Use different animation styles based on the purpose of each carousel.
+
+---
+
+## CAROUSEL TRANSITIONS
+
+Use:
+
+* Smooth slide transitions
+* Controlled fade transitions
+* Subtle scale transitions
+* Crossfade where appropriate
+* Slight opacity changes
+* Active card emphasis
+
+Avoid:
+
+* Excessive bounce
+* Elastic transitions
+* Random rotations
+* Flashing
+* Fast and disorienting transitions
+
+Use a consistent animation timing system.
+
+Suggested approach:
+
+* Micro-interactions: approximately 150–250ms
+* Button transitions: approximately 250–450ms
+* Card transitions: approximately 350–650ms
+* Hero transitions: approximately 600–1,000ms when appropriate
+
+Choose timing based on the interaction, not by blindly applying the same duration everywhere.
+
+---
+
+## ACTIVE SLIDE EFFECT
+
+For premium fleet carousels:
+
+* Active slide has full opacity
+* Adjacent slides have slightly reduced opacity
+* Active slide can scale subtly
+* Text and CTA remain stable
+* Do not change card dimensions abruptly
+* Avoid layout shifting
+
+---
+
+## IMAGE REVEAL
+
+Use:
+
+* Soft clip-path reveal
+* Mask reveal
+* Fade-in
+* Slow image scale
+* Subtle zoom on hover
+
+Do not over-zoom car images or crop important vehicle details.
+
+---
+
+## PARALLAX
+
+Use parallax only in selected hero or image sections.
+
+Rules:
+
+* Keep movement subtle
+* Do not affect readability
+* Disable or reduce on mobile when necessary
+* Respect reduced-motion settings
+* Avoid performance-heavy scroll handlers
+
+Prefer efficient animation techniques.
+
+==================================================
+
+## 7. WEBSITE-WIDE SCROLL ANIMATIONS
+
+==================================================
+
+Create a consistent scroll-reveal system.
+
+Animation types:
+
+* Fade in
+* Fade up
+* Fade from left
+* Fade from right
+* Image reveal
+* Staggered card entrance
+* Subtle scale-in
+* Text reveal
+* Section heading reveal
+
+Apply appropriately to:
+
+* Hero sections
+* Fleet cards
+* Services
+* Location sections
+* Why choose us
+* Testimonials
+* Blog cards
+* Contact sections
+* Footer content
+
+Rules:
+
+* Animate elements only when they enter the viewport
+* Avoid replaying animations excessively
+* Avoid hiding important content from search engines
+* Do not cause layout shifts
+* Do not animate every element independently
+* Use staggered animation only for grouped content
+* Keep animations smooth and professional
+
+Create reusable animation utilities or components where appropriate.
+
+==================================================
+
+## 8. PREMIUM HERO SECTION
+
+==================================================
+
+Improve the homepage hero section.
+
+Consider:
+
+* Cinematic vehicle imagery
+* Strong headline hierarchy
+* Professional dark overlay
+* Responsive text placement
+* Clear primary CTA
+* Secondary CTA
+* Booking/search widget
+* Subtle image movement
+* Scroll indicator if useful
+* Proper mobile layout
+
+Possible content structure:
+
+Eyebrow:
+PREMIUM CAR RENTAL
+
+Headline:
+YOUR JOURNEY.
+YOUR CHOICE.
+YOUR RIDE.
+
+Supporting text:
+Explore flexible car rental options for business, travel, airport transfers, and special occasions.
+
+Primary CTA:
+Book Your Ride
+
+Secondary CTA:
+Explore Our Fleet
+
+Use only business claims that are confirmed in the existing website content.
+
+Do not automatically replace the existing approved copy without evaluating it first.
+
+==================================================
+
+## 9. IMPROVE VEHICLE CARDS
+
+==================================================
+
+Redesign vehicle cards where necessary while preserving their functionality.
+
+Each card should support:
+
+* High-quality image
+* Vehicle name
+* Category
+* Key specifications
+* Rental pricing if available
+* Availability status if available
+* Favorite action if supported
+* View Details CTA
+* Book Now CTA
+* Hover image zoom
+* Subtle card lift
+* Clear hierarchy
+
+Card behavior:
+
+* Image should zoom subtly on hover
+* CTA should remain accessible
+* No layout shift
+* Consistent image aspect ratio
+* Proper loading placeholders
+* Mobile-friendly card layout
+* Keyboard accessible controls
+
+Do not show fake prices or availability.
+
+==================================================
+
+## 10. BUTTON AND CTA ANIMATIONS
+
+==================================================
+
+Apply the premium button system consistently.
+
+Primary buttons:
+
+* Subtle lift
+* Shine sweep
+* Arrow movement
+* Press feedback
+* Loading state
+
+Secondary buttons:
+
+* Border transition
+* Fill wipe
+* Arrow movement
+
+Card buttons:
+
+* Simple lift
+* Color transition
+* Icon movement
+
+Rules:
+
+* Do not apply all effects simultaneously
+* Do not create distracting animations
+* Maintain a clear primary CTA
+* Use touch-friendly sizes
+* Add disabled and loading states
+* Preserve form submission behavior
+* Prevent duplicate booking submissions
+
+Respect keyboard focus and reduced-motion preferences.
+
+==================================================
+
+## 11. HEADER AND NAVIGATION
+
+==================================================
+
+Improve the header without harming usability.
+
+Include where appropriate:
+
+* Sticky header
+* Transparent-to-solid transition on scroll
+* Active navigation indicator
+* Smooth dropdown opening
+* Mobile menu transition
+* Clear CTA button
+* Proper focus states
+* Responsive navigation
+
+Rules:
+
+* Header must not cover important content
+* Avoid excessive blur effects
+* Dropdowns must be keyboard accessible
+* Mobile navigation must be easy to close
+* Avoid unexpected layout shifts
+* Ensure the header works on all pages
+
+Use subtle transitions rather than dramatic effects.
+
+==================================================
+
+## 12. SERVICES SECTION
+
+==================================================
+
+Create a premium service presentation.
+
+Services may include:
+
+* Car Rental
+* Airport Transfer
+* Wedding Car Rental
+* Corporate Car Rental
+* Long-Term Rental
+* Car With Driver
+
+Use:
+
+* Hover lift
+* Image reveal
+* Icon animation
+* Staggered entrance
+* Clear CTA
+* Responsive grid or carousel
+
+Service content should be dynamic if managed through the CMS.
+
+Do not invent service terms or guarantees.
+
+==================================================
+
+## 13. PAGE TRANSITIONS AND MICRO-INTERACTIONS
+
+==================================================
+
+Add page transitions only if they improve the experience.
+
+Possible interactions:
+
+* Smooth route transition
+* Loading skeletons
+* Modal entrance and exit
+* Dropdown transitions
+* Toast notifications
+* Favorite button feedback
+* Search filter transitions
+* Form validation feedback
+* Accordion transitions
+* Image gallery transitions
+* Sticky booking CTA
+
+Rules:
+
+* Do not delay navigation unnecessarily
+* Do not animate every page element
+* Ensure browser back and forward behavior works
+* Ensure route changes remain accessible
+* Avoid animation-related booking errors
+
+==================================================
+
+## 14. CAR DETAILS PAGE EXPERIENCE
+
+==================================================
+
+Improve the vehicle details page with premium interactions.
+
+Include where appropriate:
+
+* Image gallery carousel
+* Thumbnail navigation
+* Main image transition
+* Image zoom
+* Vehicle specifications
+* Rental options
+* Booking panel
+* Sticky booking panel on desktop
+* Mobile booking CTA
+* Similar vehicle carousel
+* Availability information
+* Rental requirements
+
+Do not add a 360-degree viewer unless the required vehicle images/data actually exist.
+
+Do not display inaccurate specifications.
+
+==================================================
+
+## 15. BOOKING EXPERIENCE
+
+==================================================
+
+The booking system must remain functional and reliable.
+
+Improve:
+
+* Date picker interactions
+* Vehicle selection
+* Form transitions
+* Validation messages
+* Loading states
+* Confirmation feedback
+* Progress indicators
+* Error states
+* Mobile layout
+
+Use animations to explain progress, not to hide errors.
+
+Important:
+
+* Prevent duplicate submissions
+* Preserve entered form values when possible
+* Provide accessible validation messages
+* Maintain keyboard navigation
+* Ensure booking data is sent correctly
+* Do not claim a booking is confirmed until the backend confirms it
+
+==================================================
+
+## 16. RESPONSIVE DESIGN
+
+==================================================
+
+Test all components across:
+
+* Large desktop
+* Standard desktop
+* Laptop
+* Tablet
+* Mobile landscape
+* Mobile portrait
+
+Carousel behavior:
+
+* Desktop: multiple slides where appropriate
+* Tablet: reduced slides per view
+* Mobile: one slide or a suitable layout
+* Touch swipe must be smooth
+* Buttons must not overlap content
+* Text must not overflow
+* Images must preserve their aspect ratio
+* Navigation controls must remain usable
+
+Do not simply shrink the desktop layout for mobile.
+Design the mobile experience intentionally.
+
+==================================================
+
+## 17. ACCESSIBILITY AND REDUCED MOTION
+
+==================================================
+
+Implement accessibility best practices.
+
+Requirements:
+
+* Semantic HTML
+* Keyboard-accessible controls
+* Visible focus indicators
+* Accessible carousel labels
+* Proper button labels
+* ARIA attributes where required
+* Screen-reader-friendly navigation
+* Sufficient color contrast
+* Alternative text for meaningful images
+* No keyboard traps
+
+Support:
+
+prefers-reduced-motion: reduce
+
+When reduced motion is enabled:
+
+* Disable parallax
+* Disable magnetic buttons
+* Reduce or disable slide animation
+* Remove large transforms
+* Disable nonessential looping effects
+* Preserve usability and content visibility
+
+==================================================
+
+## 18. PERFORMANCE OPTIMIZATION
+
+==================================================
+
+Optimize the visual experience without reducing quality.
+
+Implement where appropriate:
+
+* Lazy loading
+* Responsive images
+* Image dimensions to prevent layout shifts
+* WebP or AVIF where supported
+* Component-level code splitting
+* Efficient carousel rendering
+* Avoid unnecessary re-renders
+* Proper cleanup of event listeners
+* Efficient intersection observers
+* Avoid expensive scroll event handlers
+* Pause inactive autoplay carousels
+* Avoid loading all large images immediately
+
+Do not sacrifice important image quality for unnecessary optimization.
+
+==================================================
+
+## 19. DYNAMIC DATA AND CMS COMPATIBILITY
+
+==================================================
+
+All dynamic content must remain compatible with the existing backend or CMS.
+
+Dynamic content may include:
+
+* Vehicles
+* Vehicle images
+* Vehicle categories
+* Prices
+* Availability
+* Services
+* Locations
+* Testimonials
+* Blog posts
+* Offers
+* Homepage sections
+
+Requirements:
+
+* Do not hard-code database content unnecessarily
+* Support loading states
+* Support error states
+* Support empty states
+* Handle missing images
+* Handle missing optional fields
+* Ensure dynamic routes work correctly
+* Preserve admin-managed content
+
+==================================================
+
+## 20. ADMIN DASHBOARD COMPATIBILITY
+
+==================================================
+
+Do not apply excessive marketing animations to the admin dashboard.
+
+Use a more functional interface:
+
+* Subtle table transitions
+* Number counter animations where useful
+* Chart entrance animation
+* Skeleton loaders
+* Modal transitions
+* Toast feedback
+* Smooth tabs
+* Clear hover states
+
+Admin operations must remain fast and reliable.
+
+Do not animate important data in a way that delays usability.
+
+==================================================
+
+## 21. VISUAL CONSISTENCY SYSTEM
+
+==================================================
+
+Create or improve a centralized visual system for:
+
+* Colors
+* Typography
+* Border radius
+* Shadows
+* Spacing
+* Animation durations
+* Easing functions
+* Breakpoints
+* Button variants
+* Card variants
+* Carousel controls
+* Focus states
+* Loading states
+
+Avoid scattered and conflicting CSS values.
+
+Use existing design tokens if available.
+If no design token system exists, introduce one carefully without breaking existing pages.
+
+==================================================
+
+## 22. QUALITY ASSURANCE
+
+==================================================
+
+After implementation, verify:
+
+### Carousel Testing
+
+* Desktop navigation
+* Mobile swipe
+* Keyboard navigation
+* Previous/next buttons
+* Pagination dots
+* Autoplay behavior
+* Pause on hover
+* Pause on inactive tab
+* Reduced-motion behavior
+* Missing image handling
+* Empty state
+* Loading state
+* Dynamic data rendering
+
+### Animation Testing
+
+* Scroll animations
+* Hover animations
+* Button press animations
+* Page transitions
+* Modal transitions
+* Mobile performance
+* Reduced-motion support
+* No layout shifts
+* No flickering
+* No animation overlap
+
+### Website Testing
+
+* Homepage
+* Fleet page
+* Car details page
+* Services
+* Locations
+* Booking flow
+* Contact forms
+* Customer dashboard
+* Admin dashboard
+* Header
+* Footer
+* Mobile menu
+* Search and filters
+
+### Technical Testing
+
+* No console errors
+* No broken imports
+* No duplicate components
+* No broken routes
+* No missing keys in React lists
+* No unnecessary dependencies
+* No broken API calls
+* No duplicate booking submissions
+* No accessibility-critical issues
+
+==================================================
+
+## 23. IMPLEMENTATION PROCESS
+
+==================================================
+
+Follow this sequence:
+
+PHASE 1:
+Audit the existing project and create an implementation plan.
+
+PHASE 2:
+Identify the existing design system and carousel/animation dependencies.
+
+PHASE 3:
+Create reusable carousel and motion components.
+
+PHASE 4:
+Implement the homepage hero and fleet carousel.
+
+PHASE 5:
+Implement category, service, testimonial, location, and related-car carousels where suitable.
+
+PHASE 6:
+Improve scroll animations, buttons, cards, header, and page sections.
+
+PHASE 7:
+Improve responsive behavior and accessibility.
+
+PHASE 8:
+Optimize performance.
+
+PHASE 9:
+Test all routes and critical booking functionality.
+
+PHASE 10:
+Provide a summary of:
+
+* Files changed
+* Components created
+* Libraries added
+* Features implemented
+* Pages improved
+* Testing performed
+* Remaining issues
+* Recommended next steps
+
+Do not claim that something has been tested if you have not actually tested it.
+
+==================================================
+
+## FINAL DESIGN STANDARD
+
+==================================================
+
+The website should feel like a premium automotive brand:
+
+* Strong visual hierarchy
+* High-quality imagery
+* Elegant carousels
+* Smooth transitions
+* Controlled animation
+* Professional typography
+* Clear booking CTAs
+* Responsive layouts
+* Fast interaction
+* Accessible user experience
+* Reliable booking functionality
+
+Prioritize quality and consistency over the number of effects.
+
+Make the website visually impressive, but ensure that every animation has a clear purpose.

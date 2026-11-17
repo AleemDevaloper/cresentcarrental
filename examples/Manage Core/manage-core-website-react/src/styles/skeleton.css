@@ -1,0 +1,178 @@
+/* ============================================================
+   MANAGE CORE — PAGE ROUTE SKELETON
+   Shimmer placeholder shown while a lazy route chunk loads.
+   ============================================================ */
+
+.mc-sk {
+  --sk-base: var(--surface-2, #f7f9fc);
+  --sk-shine: rgba(255, 255, 255, 0.55);
+  padding: 48px 0 72px;
+  min-height: 56vh;
+}
+.mc-root[data-theme="dark"] .mc-sk {
+  --sk-base: var(--surface-2, #23242e);
+  --sk-shine: rgba(255, 255, 255, 0.07);
+}
+
+.mc-sk .mc-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.mc-sk-line {
+  display: block;
+  height: 14px;
+  border-radius: 99px;
+  background: var(--sk-base);
+  overflow: hidden;
+  position: relative;
+}
+.mc-sk-line::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, transparent 20%, var(--sk-shine) 50%, transparent 80%);
+  transform: translateX(-100%);
+  animation: mc-sk-sweep 1.6s ease-in-out infinite;
+}
+.mc-sk-w20 { width: 20%; }
+.mc-sk-w30 { width: 30%; }
+.mc-sk-w40 { width: 40%; }
+.mc-sk-w50 { width: 50%; }
+.mc-sk-w60 { width: 60%; }
+.mc-sk-w70 { width: 70%; }
+.mc-sk-w80 { width: 80%; }
+.mc-sk-w90 { width: 90%; }
+
+@keyframes mc-sk-sweep {
+  to { transform: translateX(100%); }
+}
+
+/* Hero mock */
+.mc-sk-hero {
+  padding: 56px 0 48px;
+  position: relative;
+  overflow: hidden;
+}
+.mc-sk-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(640px 360px at 12% 0%, var(--brand-soft), transparent 60%),
+    radial-gradient(560px 320px at 90% 20%, var(--accent-soft), transparent 60%);
+  pointer-events: none;
+}
+.mc-sk-crumb {
+  width: 180px;
+  height: 12px;
+  border-radius: 99px;
+  background: var(--sk-base);
+  margin-bottom: 34px;
+}
+.mc-sk-eyebrow {
+  width: 110px;
+  height: 26px;
+  border-radius: 999px;
+  background: var(--brand-soft);
+  margin-bottom: 18px;
+  position: relative;
+  overflow: hidden;
+}
+.mc-sk-eyebrow::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, transparent 20%, rgba(255, 255, 255, 0.5) 50%, transparent 80%);
+  transform: translateX(-100%);
+  animation: mc-sk-sweep 1.6s ease-in-out infinite;
+}
+.mc-root[data-theme="dark"] .mc-sk-eyebrow::after {
+  background: linear-gradient(100deg, transparent 20%, rgba(255, 255, 255, 0.08) 50%, transparent 80%);
+}
+
+.mc-sk-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
+}
+.mc-sk-pill {
+  width: 170px;
+  height: 48px;
+  border-radius: 999px;
+  background: var(--sk-base);
+  position: relative;
+  overflow: hidden;
+}
+.mc-sk-pill::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, transparent 20%, var(--sk-shine) 50%, transparent 80%);
+  transform: translateX(-100%);
+  animation: mc-sk-sweep 1.6s ease-in-out infinite;
+}
+.mc-sk-pill-solid { background: var(--brand-soft); }
+
+/* Content block mock */
+.mc-sk-block {
+  padding: 44px 0;
+  border-top: 1px solid var(--line);
+}
+.mc-sk-head {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 30px;
+}
+.mc-sk-head.center {
+  align-items: center;
+  text-align: center;
+}
+.mc-sk-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.mc-sk-card {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--surface);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: var(--shadow-sm, 0 6px 24px rgba(20, 20, 40, 0.06));
+}
+.mc-sk-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--brand-soft);
+  margin-bottom: 6px;
+}
+
+/* Minimal variant */
+.mc-sk-minimal {
+  padding: 64px 0;
+}
+.mc-sk-minimal .mc-sk-line:first-child {
+  background: var(--brand-soft);
+}
+
+.mc-root[data-theme="dark"] .mc-sk-card {
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 768px) {
+  .mc-sk .mc-container { padding: 0 18px; }
+  .mc-sk-grid {
+    grid-template-columns: 1fr;
+  }
+  .mc-sk-grid.mc-sk-grid {
+    grid-template-columns: 1fr;
+  }
+  .mc-sk-hero { padding: 40px 0 32px; }
+}

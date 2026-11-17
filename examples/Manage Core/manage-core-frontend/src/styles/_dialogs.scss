@@ -1,0 +1,1032 @@
+// ============================================================
+// ENTERPRISE DIALOG SYSTEM — Premium UI/UX
+// ============================================================
+
+// --- Dialog Base ---
+.enterprise-dialog-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1055;
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  animation: dialogOverlayIn 0.25s ease-out forwards;
+  padding: 1rem;
+}
+
+.enterprise-dialog-overlay.exiting {
+  animation: dialogOverlayOut 0.2s ease-in forwards;
+}
+
+.enterprise-dialog {
+  position: relative;
+  background: var(--card-bg, #ffffff);
+  border-radius: 20px;
+  box-shadow:
+    0 25px 60px rgba(15, 23, 42, 0.15),
+    0 0 0 1px rgba(255, 255, 255, 0.05) inset,
+    0 0 0 1px var(--border, #e5e7eb);
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  animation: dialogIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  overflow: hidden;
+}
+
+.enterprise-dialog.exiting {
+  animation: dialogOut 0.2s ease-in forwards;
+}
+
+// Premium gradient accent bar along the top edge
+.enterprise-dialog::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 1;
+  background: var(--primary-gradient, linear-gradient(135deg, #4f46e5, #7c3aed));
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+// --- Sizes ---
+.dialog-sm { max-width: 400px; }
+.dialog-md { max-width: 520px; }
+.dialog-lg { max-width: 720px; }
+.dialog-xl { max-width: 960px; }
+.dialog-full { max-width: calc(100vw - 2rem); }
+
+// --- Header ---
+.dialog-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 1.5rem 1.5rem 0;
+  gap: 1rem;
+}
+
+.dialog-header-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  min-width: 0;
+  flex: 1;
+}
+
+.dialog-icon-wrapper {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+}
+
+.dialog-icon-success { background: rgba(16, 185, 129, 0.12); color: #10b981; }
+.dialog-icon-error { background: rgba(239, 68, 68, 0.12); color: #ef4444; }
+.dialog-icon-warning { background: rgba(245, 158, 11, 0.12); color: #f59e0b; }
+.dialog-icon-info { background: rgba(59, 130, 246, 0.12); color: #3b82f6; }
+.dialog-icon-danger { background: rgba(220, 38, 38, 0.12); color: #dc2626; }
+
+.dialog-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--text-primary, #111827);
+  margin: 0;
+  line-height: 1.4;
+  padding-top: 0.25rem;
+}
+
+.dialog-close-btn {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary, #6b7280);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 1.1rem;
+  margin-top: 0.15rem;
+}
+
+.dialog-close-btn:hover {
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--text-primary, #111827);
+  transform: rotate(90deg);
+}
+
+.dark-mode .dialog-close-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+// --- Body ---
+.dialog-body {
+  padding: 1rem 1.5rem;
+  overflow-y: auto;
+  color: var(--text-secondary, #6b7280);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.dialog-body p {
+  margin: 0;
+}
+
+.dialog-message + .dialog-details {
+  margin-top: 0.75rem;
+}
+
+.dialog-details-box {
+  background: var(--background, #f5f7fb);
+  border-radius: 12px;
+  padding: 0.875rem;
+  margin-top: 0.75rem;
+  border: 1px solid var(--border, #e5e7eb);
+}
+
+.dialog-details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.dialog-details-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary, #6b7280);
+}
+
+.dialog-details-copy {
+  background: none;
+  border: none;
+  color: var(--text-secondary, #6b7280);
+  cursor: pointer;
+  font-size: 0.75rem;
+  padding: 0.15rem 0.35rem;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.dialog-details-copy:hover {
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--text-primary, #111827);
+}
+
+.dialog-details-content {
+  font-size: 0.78rem;
+  color: var(--text-secondary, #6b7280);
+  white-space: pre-wrap;
+  max-height: 120px;
+  overflow-y: auto;
+  margin: 0;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  line-height: 1.5;
+}
+
+// --- Footer ---
+.dialog-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem 1.5rem;
+}
+
+.dialog-footer.reverse {
+  flex-direction: row-reverse;
+}
+
+// --- Buttons ---
+.dialog-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.5rem;
+  border-radius: 12px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+  user-select: none;
+  white-space: nowrap;
+  min-height: 42px;
+}
+
+.dialog-btn:active {
+  transform: scale(0.97);
+}
+
+.dialog-btn-primary {
+  background: linear-gradient(135deg, var(--primary, #4f46e5), var(--secondary, #6366f1));
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(79, 70, 229, 0.25);
+}
+
+.dialog-btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 25px rgba(79, 70, 229, 0.35);
+}
+
+.dialog-btn-success {
+  background: linear-gradient(135deg, #059669, #10b981);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.25);
+}
+
+.dialog-btn-success:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.35);
+}
+
+.dialog-btn-danger {
+  background: linear-gradient(135deg, #dc2626, #ef4444);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(239, 68, 68, 0.25);
+}
+
+.dialog-btn-danger:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 25px rgba(239, 68, 68, 0.35);
+}
+
+.dialog-btn-warning {
+  background: linear-gradient(135deg, #d97706, #f59e0b);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.25);
+}
+
+.dialog-btn-warning:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 25px rgba(245, 158, 11, 0.35);
+}
+
+.dialog-btn-secondary {
+  background: var(--background, #f5f7fb);
+  color: var(--text-primary, #111827);
+  border: 1px solid var(--border, #e5e7eb);
+}
+
+.dialog-btn-secondary:hover {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: var(--text-secondary, #6b7280);
+}
+
+.dialog-btn-ghost {
+  background: transparent;
+  color: var(--text-secondary, #6b7280);
+}
+
+.dialog-btn-ghost:hover {
+  background: rgba(0, 0, 0, 0.04);
+  color: var(--text-primary, #111827);
+}
+
+.dialog-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+// --- Ripple Effect ---
+.dialog-btn .ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+  transform: scale(0);
+  animation: rippleEffect 0.6s ease-out;
+  pointer-events: none;
+}
+
+@keyframes rippleEffect {
+  to { transform: scale(4); opacity: 0; }
+}
+
+// --- Spinner within button ---
+.dialog-btn-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.5s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+// ============================================================
+// TOAST SYSTEM
+// ============================================================
+
+.enterprise-toast-container {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1070;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 420px;
+  width: 100%;
+  pointer-events: none;
+}
+
+.enterprise-toast {
+  pointer-events: auto;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.875rem;
+  background: var(--card-bg, #ffffff);
+  border-radius: 16px;
+  padding: 1rem 1.25rem;
+  box-shadow:
+    0 10px 35px rgba(15, 23, 42, 0.12),
+    0 0 0 1px rgba(255, 255, 255, 0.05) inset,
+    0 0 0 1px var(--border, #e5e7eb);
+  position: relative;
+  overflow: hidden;
+  animation: toastSlideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  cursor: grab;
+  transition: box-shadow 0.2s ease;
+}
+
+.enterprise-toast:hover {
+  box-shadow:
+    0 14px 45px rgba(15, 23, 42, 0.15),
+    0 0 0 1px var(--border, #e5e7eb);
+}
+
+.enterprise-toast.exiting {
+  animation: toastSlideOut 0.3s ease-in forwards;
+}
+
+.enterprise-toast.swiping {
+  transition: none;
+}
+
+// Toast type accents
+.toast-success {
+  border-left: 4px solid #10b981;
+}
+
+.toast-error {
+  border-left: 4px solid #ef4444;
+}
+
+.toast-warning {
+  border-left: 4px solid #f59e0b;
+}
+
+.toast-info {
+  border-left: 4px solid #3b82f6;
+}
+
+.toast-icon {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+.toast-icon-success { background: rgba(16, 185, 129, 0.12); color: #10b981; }
+.toast-icon-error { background: rgba(239, 68, 68, 0.12); color: #ef4444; }
+.toast-icon-warning { background: rgba(245, 158, 11, 0.12); color: #f59e0b; }
+.toast-icon-info { background: rgba(59, 130, 246, 0.12); color: #3b82f6; }
+
+.toast-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.toast-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary, #111827);
+  margin-bottom: 0.15rem;
+}
+
+.toast-message {
+  font-size: 0.8rem;
+  color: var(--text-secondary, #6b7280);
+  margin: 0;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.toast-close-btn {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary, #6b7280);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  transition: all 0.2s ease;
+  margin-top: 0.1rem;
+}
+
+.toast-close-btn:hover {
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--text-primary, #111827);
+}
+
+.toast-progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  border-radius: 0 0 0 16px;
+  transition: width 0.1s linear;
+}
+
+.toast-progress-success { background: #10b981; }
+.toast-progress-error { background: #ef4444; }
+.toast-progress-warning { background: #f59e0b; }
+.toast-progress-info { background: #3b82f6; }
+
+// ============================================================
+// NOTIFICATION BOX
+// ============================================================
+
+.enterprise-notif-container {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1065;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 420px;
+  width: 100%;
+  pointer-events: none;
+}
+
+.enterprise-notif {
+  pointer-events: auto;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.875rem;
+  background: var(--card-bg, #ffffff);
+  border-radius: 16px;
+  padding: 1rem 1.25rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 10px 35px rgba(15, 23, 42, 0.12),
+    0 0 0 1px var(--border, #e5e7eb);
+  animation: toastSlideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  border-left: 4px solid var(--primary, #4f46e5);
+}
+
+.enterprise-notif.exiting {
+  animation: toastSlideOut 0.25s ease-in forwards;
+}
+
+.notif-icon {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+}
+
+.notif-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.notif-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary, #111827);
+  margin-bottom: 0.15rem;
+}
+
+.notif-message {
+  font-size: 0.8rem;
+  color: var(--text-secondary, #6b7280);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.notif-time {
+  font-size: 0.65rem;
+  color: var(--text-secondary, #6b7280);
+  margin-top: 0.35rem;
+  opacity: 0.7;
+}
+
+.notif-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.notif-action-btn {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: rgba(79, 70, 229, 0.1);
+  color: var(--primary, #4f46e5);
+}
+
+.notif-action-btn:hover {
+  background: rgba(79, 70, 229, 0.2);
+}
+
+.notif-dismiss-btn {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary, #6b7280);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  transition: all 0.2s ease;
+}
+
+.notif-dismiss-btn:hover {
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--text-primary, #111827);
+}
+
+.notif-progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  border-radius: 0 0 16px 16px;
+  transition: width 0.1s linear;
+}
+
+.notif-clear-all {
+  pointer-events: auto;
+  align-self: flex-end;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-secondary, #6b7280);
+  background: var(--card-bg, #ffffff);
+  border: 1px solid var(--border, #e5e7eb);
+  border-radius: 10px;
+  padding: 0.4rem 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.notif-clear-all:hover {
+  background: rgba(239, 68, 68, 0.08);
+  border-color: #ef4444;
+  color: #ef4444;
+}
+
+// ============================================================
+// DELETE CONFIRM DIALOG
+// ============================================================
+
+.delete-dialog-warning-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 0.5rem;
+  font-size: 1.75rem;
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  animation: deleteIconPulse 2s ease-in-out infinite;
+}
+
+@keyframes deleteIconPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.delete-dialog-title {
+  text-align: center;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--text-primary, #111827);
+  margin-bottom: 0.5rem;
+}
+
+.delete-dialog-message {
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--text-secondary, #6b7280);
+  line-height: 1.5;
+  margin-bottom: 0.25rem;
+}
+
+.delete-dialog-item-name {
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary, #111827);
+  padding: 0.5rem 0.75rem;
+  background: var(--background, #f5f7fb);
+  border-radius: 10px;
+  display: inline-block;
+  margin: 0 auto;
+  border: 1px dashed var(--border, #e5e7eb);
+  font-family: 'SF Mono', 'Fira Code', monospace;
+}
+
+.dark-mode .delete-dialog-item-name {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.delete-dialog-footer {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.delete-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.75rem;
+  border-radius: 12px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  min-width: 100px;
+}
+
+.delete-btn-danger {
+  background: linear-gradient(135deg, #dc2626, #ef4444);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(239, 68, 68, 0.25);
+}
+
+.delete-btn-danger:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(239, 68, 68, 0.35);
+}
+
+.delete-btn-cancel {
+  background: var(--background, #f5f7fb);
+  color: var(--text-primary, #111827);
+  border: 1px solid var(--border, #e5e7eb);
+}
+
+.delete-btn-cancel:hover {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: var(--text-secondary, #6b7280);
+}
+
+.delete-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+// ============================================================
+// LOADING OVERLAY
+// ============================================================
+
+.loading-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1080;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  opacity: 0;
+  transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.loading-overlay.loading-overlay-visible {
+  opacity: 1;
+}
+
+.loading-overlay-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: dialogOverlayIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.loading-overlay-spinner {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 4px solid rgba(255, 255, 255, 0.15);
+  border-top-color: var(--primary, #818cf8);
+  border-right-color: rgba(255, 255, 255, 0.08);
+  animation: spin 0.7s linear infinite;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 0 20px rgba(79, 70, 229, 0.15);
+}
+
+.loading-overlay-text {
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  opacity: 0.85;
+}
+
+.loading-overlay-progress {
+  margin-top: 1.5rem;
+  width: 200px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.loading-overlay-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary, #4f46e5), #818cf8, #22d3ee);
+  background-size: 200% 100%;
+  border-radius: 4px;
+  animation: loadingProgress 2s ease-in-out infinite, shimmer 2s linear infinite;
+  width: 40%;
+}
+
+@keyframes loadingProgress {
+  0% { width: 0%; margin-left: 0; }
+  50% { width: 60%; margin-left: 20%; }
+  100% { width: 0%; margin-left: 100%; }
+}
+
+// Dark mode
+.dark-mode .loading-overlay {
+  background: rgba(2, 6, 23, 0.75);
+  backdrop-filter: blur(16px);
+}
+
+.dark-mode .loading-overlay-spinner {
+  border-color: rgba(255, 255, 255, 0.08);
+  border-top-color: #818cf8;
+  box-shadow: 0 0 30px rgba(99, 102, 241, 0.1);
+}
+
+// ============================================================
+// PROMPT DIALOG
+// ============================================================
+
+.dialog-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--border, #e5e7eb);
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-family: 'Inter', sans-serif;
+  color: var(--text-primary, #111827);
+  background: var(--background, #f5f7fb);
+  transition: all 0.2s ease;
+  outline: none;
+  margin-top: 0.75rem;
+}
+
+.dialog-input:focus {
+  border-color: var(--primary, #4f46e5);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.dark-mode .dialog-input {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dialog-input-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-primary, #111827);
+  margin-bottom: 0.35rem;
+  display: block;
+}
+
+.dialog-textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+// ============================================================
+// KEYFRAMES
+// ============================================================
+
+@keyframes dialogOverlayIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes dialogOverlayOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes dialogIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes dialogOut {
+  from {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+}
+
+@keyframes toastSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(120%) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+  }
+}
+
+@keyframes toastSlideOut {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(120%);
+  }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+// ============================================================
+// MOBILE ADAPTATIONS
+// ============================================================
+
+@media (max-width: 576px) {
+  .enterprise-dialog-overlay {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .enterprise-dialog {
+    max-width: 100% !important;
+    border-radius: 20px 20px 0 0;
+    max-height: 85vh;
+    animation: dialogSlideUpMobile 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .enterprise-dialog.exiting {
+    animation: dialogSlideDownMobile 0.2s ease-in forwards;
+  }
+
+  @keyframes dialogSlideUpMobile {
+    from { transform: translateY(100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+
+  @keyframes dialogSlideDownMobile {
+    from { transform: translateY(0); opacity: 1; }
+    to { transform: translateY(100%); opacity: 0; }
+  }
+
+  .enterprise-toast-container,
+  .enterprise-notif-container {
+    left: 0.75rem;
+    right: 0.75rem;
+    max-width: none;
+  }
+
+  .dialog-footer {
+    flex-direction: column-reverse;
+    gap: 0.5rem;
+  }
+
+  .dialog-btn {
+    width: 100%;
+  }
+
+  .dialog-header {
+    padding-top: 1.25rem;
+  }
+
+  .dialog-body {
+    padding: 0.75rem 1.25rem;
+  }
+
+  .dialog-footer {
+    padding: 0.75rem 1.25rem 1.25rem;
+  }
+}
+
+// ============================================================
+// DARK MODE TWEAKS
+// ============================================================
+
+.dark-mode {
+  .enterprise-dialog {
+    box-shadow:
+      0 25px 60px rgba(0, 0, 0, 0.4),
+      0 0 0 1px rgba(255, 255, 255, 0.06) inset,
+      0 0 0 1px rgba(255, 255, 255, 0.06);
+  }
+
+  .dialog-btn-secondary {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #f8fafc;
+  }
+
+  .dialog-btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .dialog-btn-ghost {
+    color: #94a3b8;
+  }
+
+  .dialog-btn-ghost:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: #f8fafc;
+  }
+
+  .dialog-details-box {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+
+  .enterprise-toast {
+    box-shadow:
+      0 10px 35px rgba(0, 0, 0, 0.3),
+      0 0 0 1px rgba(255, 255, 255, 0.06);
+  }
+
+  .enterprise-notif {
+    box-shadow:
+      0 10px 35px rgba(0, 0, 0, 0.3),
+      0 0 0 1px rgba(255, 255, 255, 0.06);
+  }
+}

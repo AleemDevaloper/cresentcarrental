@@ -1,0 +1,155 @@
+import React, { useState, useEffect } from 'react';
+import { useApp } from '../../../../context/AppContext';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft, faSave, faSync, faCheckCircle, faXmark, faKeyboard, faInfoCircle, faShieldHalved, faArrowRotateLeft, faFileInvoice, faMoneyBillWave } from "@fortawesome/free-solid-svg-icons";
+
+const ErpLogReturnVoucher = () => {
+  const { theme, addNotification, setActiveTab } = useApp();
+  const isDark = theme === 'dark';
+  const bgColor = isDark ? '#1a1d29' : '#F8FAFC';
+  const cardBg = isDark ? '#242838' : '#ffffff';
+  const textColor = isDark ? '#e2e8f0' : '#1e293b';
+  const mutedColor = isDark ? '#94a3b8' : '#64748b';
+  const borderColor = isDark ? '#2d3248' : '#e2e8f0';
+  const inputBg = isDark ? '#1e2235' : '#ffffff';
+  const inputBorder = isDark ? '#2d3248' : '#d1d5db';
+  const successBg = isDark ? '#064e3b' : '#dcfce7';
+  const successColor = isDark ? '#4ade80' : '#16a34a';
+  const warningBg = isDark ? '#1e293b' : '#fef3c7';
+  const warningColor = isDark ? '#fbbf24' : '#d97706';
+  const dangerBg = isDark ? '#7f1d1d' : '#fee2e2';
+  const dangerColor = isDark ? '#f87171' : '#dc2626';
+
+  const [form, setForm] = useState({
+    grnRef: 'None',
+    poRef: '',
+    vendor: 'Oscorp Tech',
+    returnedQty: 1,
+    refundAmount: 0,
+    reason: 'Incorrect grade specification',
+    notes: ''
+  });
+  const [errors, setErrors] = useState({});
+  const [liveErrors, setLiveErrors] = useState({});
+  const [draftSaved, setDraftSaved] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+
+  const inputStyle = { width:'100%', padding:'0.5rem 0.75rem', fontSize:'0.8rem', background:inputBg, border:`1px solid ${inputBorder}`, borderRadius:'8px', color:textColor, outline:'none', transition:'border-color 0.2s' };
+  const labelStyle = { display:'block', fontSize:'0.7rem', fontWeight:600, color:mutedColor, marginBottom:'0.35rem', textTransform:'uppercase', letterSpacing:'0.03em' };
+  const cardStyle = { background:cardBg, border:`1px solid ${borderColor}`, borderRadius:'12px', boxShadow: isDark ? '0 1px 3px rgba(0,0,0,0.3)' : '0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04)', padding:'1.25rem', marginBottom:'1rem' };
+
+  useEffect(() => { const saved = localStorage.getItem('rv_draft'); if (saved) { try { setForm(prev => ({ ...prev, ...JSON.parse(saved) })); } catch (e) {} } }, []);
+  useEffect(() => { const t = setTimeout(() => localStorage.setItem('rv_draft', JSON.stringify(form)), 1000); return () => clearTimeout(t); }, [form]);
+  const set = (k, v) => { setForm(f => ({ ...f, [k]: v })); if (errors[k]) setErrors(e => ({ ...e, [k]: undefined })); };
+  const validateLive = () => { const e = {}; if (form.grnRef === 'None') e.grnRef = 'Select an intake GRN reference.'; if (!(Number(form.returnedQty) > 0)) e.returnedQty = 'Quantity returned must be greater than 0.'; if (!(Number(form.refundAmount) >= 0)) e.refundAmount = 'Refund value must be 0 or more.'; if (!form.vendor) e.vendor = 'Supplier vendor is required.'; setLiveErrors(e); return Object.keys(e).length === 0; };
+  useEffect(() => { const t = setTimeout(validateLive, 500); return () => clearTimeout(t); }, [form]);
+  const handleSaveDraft = () => { localStorage.setItem('rv_draft', JSON.stringify(form)); setDraftSaved(true); setTimeout(() => setDraftSaved(false), 3000); addNotification('Return voucher draft saved.', 'info'); };
+  const validate = () => { const e = {}; if (form.grnRef === 'None') e.grnRef = 'Select an intake GRN reference.'; if (!(Number(form.returnedQty) > 0)) e.returnedQty = 'Quantity returned must be greater than 0.'; if (!(Number(form.refundAmount) >= 0)) e.refundAmount = 'Refund value must be 0 or more.'; if (!form.vendor) e.vendor = 'Supplier vendor is required.'; setErrors(e); return Object.keys(e).length === 0; };
+  const handleSubmit = async () => { if (!validate()) { addNotification('Please fix the highlighted fields.', 'warning'); return; } setSubmitting(true); try { await new Promise(r => setTimeout(r, 600)); addNotification('Return voucher logged successfully.', 'success'); localStorage.removeItem('rv_draft'); setActiveTab('erp_purchase_returns'); } catch (err) { addNotification('Failed to log return voucher.', 'error'); } finally { setSubmitting(false); } };
+  const handleBack = () => setActiveTab('erp_purchase_returns');
+  useEffect(() => { const h = (e) => { if ((e.ctrlKey||e.metaKey) && e.key==='s'){e.preventDefault();handleSaveDraft();} if ((e.ctrlKey||e.metaKey) && e.key==='Enter'){e.preventDefault();handleSubmit();} }; window.addEventListener('keydown', h); return () => window.removeEventListener('keydown', h); }, []);
+  const inputWithError = (k) => ({ ...inputStyle, border: errors[k] || liveErrors[k] ? `1px solid ${dangerColor}` : inputStyle.border });
+  return (<div style={{ background: bgColor, minHeight:'100vh', padding:'1.5rem', fontFamily:"'Inter', sans-serif" }}>
+    <style>{`.rv-input:focus{border-color:#6366f1!important;box-shadow:0 0 0 3px rgba(99,102,241,0.1);} .rv-pulse{animation:rvp 2s ease-in-out 1;} @keyframes rvp{0%{opacity:1}50%{opacity:.6}100%{opacity:1}} @media(max-width:768px){.rv-responsive{grid-template-columns:1fr!important;}}`}</style>
+    <div style={{ maxWidth: 1400, margin:'0 auto' }}>
+      <div className="d-flex flex-wrap align-items-center justify-content-between mb-3" style={{ gap:'0.75rem' }}>
+        <div className="d-flex align-items-center gap-3">
+          <button onClick={handleBack} className="btn btn-sm border-0 d-flex align-items-center justify-content-center" style={{ width:36, height:36, borderRadius:'10px', background: isDark ? '#2d3248' : '#ffffff', color: textColor, border:`1px solid ${borderColor}` }}><FontAwesomeIcon icon={faArrowLeft} style={{ fontSize:'0.85rem' }} /></button>
+          <div>
+            <div className="d-flex align-items-center gap-2 mb-1">
+              <span style={{ background:'#dcfce7', color:'#16a34a', padding:'2px 8px', borderRadius:'4px', fontSize:'0.6rem', fontWeight:700, letterSpacing:'0.04em' }}>PURCHASING / ERP</span>
+              {draftSaved && <span className="rv-pulse" style={{ fontSize:'0.6rem', color:'#10b981', fontWeight:600 }}>Draft Saved</span>}
+            </div>
+            <h1 style={{ fontSize:'1.4rem', fontWeight:700, color:textColor, margin:0, lineHeight:1.2 }}>Log Return Voucher</h1>
+            <p style={{ fontSize:'0.78rem', color:mutedColor, margin:'0.25rem 0 0 0', maxWidth:600 }}>Record a supplier goods return, raise a debit note, and track accounts-payable credit adjustments.</p>
+          </div>
+        </div>
+        <div className="d-flex gap-2" style={{ flexShrink:0 }}>
+          <button onClick={handleSaveDraft} className="btn btn-sm d-flex align-items-center gap-1 px-3" style={{ borderRadius:'10px', background: isDark ? '#2d3248' : '#ffffff', color:mutedColor, border:`1px solid ${borderColor}`, fontSize:'0.8rem', padding:'0.5rem 1rem' }}><FontAwesomeIcon icon={faSave} /> Save Draft</button>
+          <button onClick={handleSubmit} disabled={submitting} className="btn btn-sm d-flex align-items-center gap-1 px-3 border-0 text-white" style={{ borderRadius:'10px', background: submitting ? '#94a3b8' : 'linear-gradient(135deg, #6366f1, #4f46e5)', boxShadow: submitting ? 'none' : '0 4px 14px rgba(99,102,241,0.35)', fontSize:'0.8rem', padding:'0.5rem 1rem' }}><FontAwesomeIcon icon={submitting ? faSync : faCheckCircle} spin={submitting} /> {submitting ? 'Saving...' : 'Save Return Voucher'}</button>
+          <button onClick={handleBack} className="btn btn-sm d-flex align-items-center gap-1 px-3" style={{ borderRadius:'10px', background: isDark ? '#2d3248' : '#ffffff', color:mutedColor, border:`1px solid ${borderColor}`, fontSize:'0.8rem', padding:'0.5rem 1rem' }}><FontAwesomeIcon icon={faXmark} /> Cancel</button>
+        </div>
+      </div>
+      <div className="d-flex align-items-center gap-3 mb-3" style={{ fontSize:'0.65rem', color:mutedColor }}>
+        <span><FontAwesomeIcon icon={faKeyboard} className="me-1" />Ctrl+S: Draft</span>
+        <span><FontAwesomeIcon icon={faKeyboard} className="me-1" />Ctrl+Enter: Save</span>
+      </div>
+      <div className="row g-3 rv-responsive">
+        <div className="col-lg-8">
+          <div style={cardStyle}>
+            <div className="d-flex align-items-center gap-2 mb-3">
+              <FontAwesomeIcon icon={faArrowRotateLeft} style={{ color: isDark ? '#fbbf24' : '#d97706', fontSize:'0.95rem' }} />
+              <h5 style={{ margin:0, fontSize:'0.95rem', fontWeight:700, color:textColor }}>Return Details</h5>
+            </div>
+            <div className="row g-3">
+              <div className="col-md-6">
+                <label style={labelStyle}>Intake GRN Reference</label>
+                <select className="rv-input" style={inputWithError('grnRef')} value={form.grnRef} onChange={(e) => set('grnRef', e.target.value)}>
+                  <option value="None">None (Manual Return Log)</option>
+                  <option value="GRN-2026-001">GRN-2026-001 - Oscorp Tech (PO: PO-2026-001)</option>
+                  <option value="GRN-2026-002">GRN-2026-002 - Stark Ind. (PO: PO-2026-002)</option>
+                </select>
+                {(errors.grnRef || liveErrors.grnRef) && <div style={{ color: dangerColor, fontSize:'0.7rem', marginTop:'0.3rem' }}>{errors.grnRef || liveErrors.grnRef}</div>}
+              </div>
+              <div className="col-md-6">
+                <label style={labelStyle}>PO Reference (Auto matched)</label>
+                <input className="rv-input" style={inputWithError('poRef')} type="text" readOnly value={form.poRef} placeholder="Auto-matched from GRN" />
+              </div>
+              <div className="col-md-6">
+                <label style={labelStyle}>Supplier Vendor</label>
+                <input className="rv-input" style={inputWithError('vendor')} type="text" value={form.vendor} onChange={(e) => set('vendor', e.target.value)} placeholder="Supplier name" />
+                {(errors.vendor || liveErrors.vendor) && <div style={{ color: dangerColor, fontSize:'0.7rem', marginTop:'0.3rem' }}>{errors.vendor || liveErrors.vendor}</div>}
+              </div>
+              <div className="col-md-6">
+                <label style={labelStyle}>Quantity Returned</label>
+                <input className="rv-input" style={inputWithError('returnedQty')} type="number" min="1" value={form.returnedQty} onChange={(e) => set('returnedQty', e.target.value)} />
+                {(errors.returnedQty || liveErrors.returnedQty) && <div style={{ color: dangerColor, fontSize:'0.7rem', marginTop:'0.3rem' }}>{errors.returnedQty || liveErrors.returnedQty}</div>}
+              </div>
+              <div className="col-md-6">
+                <label style={labelStyle}>Refund Claimed / Debit Note Value ($)</label>
+                <input className="rv-input" style={inputWithError('refundAmount')} type="number" min="0" step="0.01" value={form.refundAmount} onChange={(e) => set('refundAmount', e.target.value)} />
+                {(errors.refundAmount || liveErrors.refundAmount) && <div style={{ color: dangerColor, fontSize:'0.7rem', marginTop:'0.3rem' }}>{errors.refundAmount || liveErrors.refundAmount}</div>}
+              </div>
+              <div className="col-md-6">
+                <label style={labelStyle}>Return Reason Category</label>
+                <select className="rv-input" style={inputStyle} value={form.reason} onChange={(e) => set('reason', e.target.value)}>
+                  <option value="Incorrect grade specification">Incorrect grade specification</option>
+                  <option value="Physical damage during shipping transit">Physical damage during shipping transit</option>
+                  <option value="Exceeded project requirements (Over-ordered)">Exceeded project requirements (Over-ordered)</option>
+                </select>
+              </div>
+              <div className="col-12">
+                <label style={labelStyle}>Notes / QC rejection checklist reference</label>
+                <textarea className="rv-input" style={{ ...inputStyle, resize:'vertical', minHeight:'80px' }} value={form.notes} onChange={(e) => set('notes', e.target.value)} placeholder="Reference QC checklist, photos, or additional context..." />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="col-lg-4">
+          <div style={cardStyle}>
+            <div className="d-flex align-items-center gap-2 mb-3">
+              <FontAwesomeIcon icon={faArrowRotateLeft} style={{ color: isDark ? '#fbbf24' : '#d97706', fontSize:'0.95rem' }} />
+              <h5 style={{ margin:0, fontSize:'0.95rem', fontWeight:700, color:textColor }}>Return Summary</h5>
+            </div>
+            <div className="d-flex justify-content-between py-2" style={{ borderBottom:`1px solid ${borderColor}` }}>
+              <span style={{ fontSize:'0.78rem', color:mutedColor }}>Quantity Returned</span>
+              <span style={{ fontSize:'0.78rem', fontWeight:600, color:textColor }}>{Number(form.returnedQty) || 0}</span>
+            </div>
+            <div className="d-flex justify-content-between py-2">
+              <span style={{ fontSize:'0.78rem', color:mutedColor }}>Refund / Debit Value</span>
+              <span style={{ fontSize:'0.78rem', fontWeight:600, color:successColor }}>${Number(form.refundAmount || 0).toFixed(2)}</span>
+            </div>
+          </div>
+          <div style={cardStyle}>
+            <div className="d-flex align-items-center gap-2 mb-3">
+              <FontAwesomeIcon icon={faFileInvoice} style={{ color: isDark ? '#fbbf24' : '#d97706', fontSize:'0.95rem' }} />
+              <h5 style={{ margin:0, fontSize:'0.95rem', fontWeight:700, color:textColor }}>Debit Note</h5>
+            </div>
+            <p style={{ fontSize:'0.78rem', color:mutedColor, margin:0, lineHeight:1.5 }}>Raising this voucher accrues a supplier debit note and reduces the open accounts-payable balance.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>);
+};
+export default ErpLogReturnVoucher;

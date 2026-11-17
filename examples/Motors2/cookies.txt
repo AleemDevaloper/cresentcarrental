@@ -1,0 +1,6 @@
+# HTTrack Website Copier Cookie File
+# This file format is compatible with Netscape cookies
+motors.stylemixthemes.com	TRUE	/	FALSE	1999999999	stm_visitor_22	75524541
+player.vimeo.com	TRUE	/	FALSE	1999999999	__cf_bm	L_hozrJ1KRdknzKwWviYlFNmnP.u9fozp1_RWzOXrJA-1790070783.3919075-1.0.1.1-16afrARk4Tw29yIahRKK4j0Mi_Dm90uOlXr2I_3KmB0eq.Yi.X8FdJfQa7pwEuVSeShjaXwqPlAm4BRLaPEOBDSSK5DMy0gY9J85KXg3K_mgXy4kK81fIPehV5i87iHO
+vimeo.com	TRUE	/	FALSE	1999999999	SameSite	None
+
