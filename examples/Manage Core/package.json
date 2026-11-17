@@ -1,9 +1,0 @@
-{
-  "name": "manage-core-workspace",
-  "private": true,
-  "scripts": {
-    "build:frontend": "npm run build --prefix manage-core-frontend",
-    "build:website": "npm run build --prefix manage-core-website-react",
-    "build:all": "npm run build:frontend && npm run build:website"
-  }
-}

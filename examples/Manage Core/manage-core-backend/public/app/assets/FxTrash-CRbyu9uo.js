@@ -1,1 +1,0 @@
-import{o as e}from"./rolldown-runtime-BXk0DNi4.js";import{Vl as t,vu as a}from"./ai-BoznniVJ.js";import{o as s}from"./mfg-BzttTigo.js";var u=e(a(),1),o=t(),n=({isDark:r})=>(0,o.jsx)(s,{system:"fx",isDark:r,title:"FX Trash",subtitle:"Recover soft-deleted currencies, exchange rates, transactions, and revaluations.",accent:"#8b5cf6"});export{n as default};

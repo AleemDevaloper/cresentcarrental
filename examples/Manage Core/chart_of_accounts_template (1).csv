@@ -1,2 +1,0 @@
-﻿code,name,account_type_code,account_group_code,parent_code,normal_balance,description,is_control_account,is_cash_account,is_bank_account,allow_manual_entries,status,tax_category
-5100,"Office Expenses",expense,,,debit,"General admin expense account",0,0,0,1,active,
