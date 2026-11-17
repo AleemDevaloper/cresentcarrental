@@ -4,6 +4,13 @@
    GPU-friendly: transform, opacity, color, border, shadow.
    ========================================================= */
 
+/* ---------- Animated border light ---------- */
+@property --btn-border-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
 /* ---------- Base ---------- */
 .btn {
   position: relative;
@@ -23,6 +30,42 @@
     color 0.28s cubic-bezier(0.22, 1, 0.36, 1),
     opacity 0.25s ease;
   will-change: transform;
+}
+
+/* A slim light travels around the button edge on hover/focus. */
+.btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  padding: 1.5px;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  background: conic-gradient(
+    from var(--btn-border-angle),
+    transparent 0deg,
+    transparent 286deg,
+    rgba(255, 255, 255, 0.12) 304deg,
+    rgba(255, 255, 255, 0.95) 328deg,
+    #ed1111 346deg,
+    transparent 360deg
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  transition: opacity 0.22s ease;
+}
+
+.btn:hover::after,
+.btn:focus-visible::after {
+  opacity: 1;
+  animation: crescent-btn-border-sweep 1.6s linear infinite;
+}
+
+@keyframes crescent-btn-border-sweep {
+  to { --btn-border-angle: 360deg; }
 }
 
 /* One-shot diagonal shine (runs once per hover entry) */
@@ -233,7 +276,9 @@
 }
 
 .btn:disabled::before,
-.btn[aria-disabled='true']::before {
+.btn:disabled::after,
+.btn[aria-disabled='true']::before,
+.btn[aria-disabled='true']::after {
   display: none;
 }
 
@@ -298,7 +343,8 @@
 
 /* ---------- Touch / no-hover: no sticky hover transforms or shine ---------- */
 @media (hover: none), (pointer: coarse) {
-  .btn::before {
+  .btn::before,
+  .btn::after {
     display: none;
   }
 
@@ -321,7 +367,8 @@
     will-change: auto;
   }
 
-  .btn::before {
+  .btn::before,
+  .btn::after {
     display: none !important;
   }
 
@@ -367,11 +414,7 @@
   outline-offset: 3px;
 }
 
-/* ---------- Remove hero-only duplicate shine (global .btn::before covers it) ---------- */
-.hero-actions .btn-red::after {
-  display: none !important;
-}
-
+/* Hero buttons use the global shine and animated border. */
 .hero-actions .btn-red {
   overflow: hidden;
 }
