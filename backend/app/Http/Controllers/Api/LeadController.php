@@ -1,0 +1,3 @@
+<?php
+namespace App\Http\Controllers\Api;use App\Http\Controllers\Controller;use App\Models\Lead;use Illuminate\Http\Request;
+class LeadController extends Controller { public function store(Request $r){$d=$r->validate(['name'=>'required|string|max:150','phone'=>'nullable|string|max:40','email'=>'nullable|email|max:190','source'=>'nullable|string|max:80','interest'=>'nullable|string|max:190','vehicle_id'=>'nullable|exists:vehicles,id','location_id'=>'nullable|exists:locations,id','message'=>'nullable|string|max:5000']);$lead=Lead::create($d+['source'=>$d['source']??'Website','status'=>'New']);return response()->json(['data'=>$lead],201);} }

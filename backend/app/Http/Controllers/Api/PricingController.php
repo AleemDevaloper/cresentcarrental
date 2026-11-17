@@ -1,0 +1,4 @@
+<?php
+namespace App\Http\Controllers\Api;
+use App\Http\Controllers\Controller;use App\Models\Vehicle;use App\Services\PricingService;use Carbon\Carbon;use Illuminate\Http\Request;
+class PricingController extends Controller { public function __construct(private PricingService $service){} public function quote(Request $r){$d=$r->validate(['vehicle_id'=>'required|exists:vehicles,id','pickup_date'=>'required|date','return_date'=>'required|date','pickup_time'=>'nullable|date_format:H:i','return_time'=>'nullable|date_format:H:i','rental_type'=>'nullable|in:self_drive,with_driver']);$vehicle=Vehicle::findOrFail($d['vehicle_id']);$pickup=Carbon::parse($d['pickup_date'].' '.($d['pickup_time']??'10:00'));$return=Carbon::parse($d['return_date'].' '.($d['return_time']??'10:00'));return response()->json(['data'=>$this->service->quote($vehicle,$pickup,$return,$d['rental_type']??'self_drive')]);} }

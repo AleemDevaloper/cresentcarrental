@@ -1,0 +1,116 @@
+/* =========================================================
+   Crescent Custom Cursor (desktop fine-pointer only)
+   ========================================================= */
+
+html.has-custom-cursor,
+html.has-custom-cursor * {
+  cursor: none !important;
+}
+
+html.has-custom-cursor input,
+html.has-custom-cursor textarea,
+html.has-custom-cursor [contenteditable='true'] {
+  cursor: text !important;
+}
+
+.cursor-root {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483000;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.cursor-ring,
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.cursor-ring {
+  width: 36px;
+  height: 36px;
+  margin: -18px 0 0 -18px;
+  border: 1.5px solid rgba(237, 17, 17, 0.85);
+  box-shadow: 0 0 0 1px rgba(5, 5, 5, 0.15), 0 0 18px rgba(237, 17, 17, 0.18);
+  opacity: 0;
+  transition:
+    width 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    height 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    margin 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.28s ease,
+    background-color 0.28s ease,
+    opacity 0.25s ease,
+    box-shadow 0.28s ease;
+}
+
+.cursor-dot {
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 -3px;
+  background: #ed1111;
+  opacity: 0;
+  transition:
+    width 0.22s cubic-bezier(0.22, 1, 0.36, 1),
+    height 0.22s cubic-bezier(0.22, 1, 0.36, 1),
+    margin 0.22s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.22s ease,
+    opacity 0.2s ease;
+}
+
+.cursor-root.is-visible .cursor-ring,
+.cursor-root.is-visible .cursor-dot {
+  opacity: 1;
+}
+
+.cursor-root.is-hover .cursor-ring {
+  width: 58px;
+  height: 58px;
+  margin: -29px 0 0 -29px;
+  border-color: rgba(237, 17, 17, 0.55);
+  background: rgba(237, 17, 17, 0.08);
+}
+
+.cursor-root.is-hover .cursor-dot {
+  width: 4px;
+  height: 4px;
+  margin: -2px 0 0 -2px;
+}
+
+.cursor-root.is-pressed .cursor-ring {
+  width: 30px;
+  height: 30px;
+  margin: -15px 0 0 -15px;
+  border-color: #ed1111;
+  background: rgba(237, 17, 17, 0.16);
+}
+
+.cursor-root.is-pressed .cursor-dot {
+  width: 8px;
+  height: 8px;
+  margin: -4px 0 0 -4px;
+}
+
+.cursor-root.is-text .cursor-ring {
+  width: 28px;
+  height: 28px;
+  margin: -14px 0 0 -14px;
+  border-color: rgba(5, 5, 5, 0.55);
+  background: transparent;
+  box-shadow: none;
+}
+
+.cursor-root.is-text .cursor-dot {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor-ring,
+  .cursor-dot {
+    transition: none;
+  }
+}

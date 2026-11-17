@@ -1,0 +1,3 @@
+<?php
+namespace App\Http\Controllers\Admin;use App\Models\Customer;use Illuminate\Http\Request;
+class CustomerController extends CrudController { protected string $model=Customer::class;protected array $rules=['full_name'=>'required|string|max:190','phone'=>'required|string|max:60','email'=>'nullable|email|max:190','cnic'=>'nullable|string|max:80','address'=>'nullable|string|max:1000','notes'=>'nullable|string|max:5000']; public function index(Request $r){return response()->json(Customer::withCount('bookings')->when($r->search,fn($q,$v)=>$q->where(fn($x)=>$x->where('full_name','like',"%$v%")->orWhere('phone','like',"%$v%")->orWhere('email','like',"%$v%")))->latest()->paginate(100));} }

@@ -1,0 +1,2 @@
+<?php
+namespace App\Http\Controllers\Admin;use App\Models\Review;class ReviewController extends CrudController { protected string $model=Review::class;protected array $rules=['customer_name'=>'required|string|max:190','customer_image'=>'nullable|string|max:500','rating'=>'nullable|integer|min:1|max:5','review'=>'required|string','location'=>'nullable|string|max:190','status'=>'nullable|string|max:50','sort_order'=>'nullable|integer|min:0'];protected array $defaults=['status'=>'active','rating'=>5]; }

@@ -1,0 +1,12 @@
+node_modules/
+vendor/
+.env
+.env.*
+!.env.example
+!frontend/.env.production
+**/storage/logs/*.log
+**/storage/framework/cache/*
+**/storage/framework/sessions/*
+**/storage/framework/views/*
+.DS_Store
+*.zip

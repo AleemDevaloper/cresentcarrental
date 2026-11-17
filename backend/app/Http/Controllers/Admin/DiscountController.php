@@ -1,0 +1,2 @@
+<?php
+namespace App\Http\Controllers\Admin;use App\Models\Discount;class DiscountController extends CrudController { protected string $model=Discount::class;protected array $rules=['name'=>'required|string|max:190','code'=>'nullable|string|max:80','type'=>'required|in:fixed,percentage','value'=>'required|numeric|min:0','starts_at'=>'nullable|date','ends_at'=>'nullable|date|after:starts_at','usage_limit'=>'nullable|integer|min:1','status'=>'nullable|string|max:50'];protected array $defaults=['status'=>'active']; }

@@ -1,0 +1,2 @@
+<?php
+namespace App\Http\Controllers\Admin;use App\Models\SeoMetadata;class SeoMetadataController extends CrudController { protected string $model=SeoMetadata::class;protected array $rules=['route'=>'required|string|max:500','seo_title'=>'nullable|string|max:190','meta_description'=>'nullable|string|max:500','canonical_url'=>'nullable|string|max:1000','og_title'=>'nullable|string|max:190','og_description'=>'nullable|string|max:500','og_image'=>'nullable|string|max:1000','twitter_card'=>'nullable|string|max:80','structured_data'=>'nullable|array']; }

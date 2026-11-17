@@ -1,0 +1,167 @@
+/* ============================================================
+   CRESCENT ANIMATION SYSTEM
+   1. Fade In          9. Scroll Reveal (IO + reveal-* classes)
+   2. Fade In Up      10. Staggered Card Animation
+   3. Fade In Down    11. Image Reveal
+   4. Fade In Left    12. Parallax (.parallax)
+   5. Fade In Right   13. Hover Lift (.hover-lift)
+   6. Slide In        14. Image Zoom on Hover (.img-zoom)
+   7. Scale In        15. Text Reveal (.text-reveal)
+   8. Zoom In         16. Counter (.counter — see Reveal.jsx)
+   ============================================================ */
+
+:root {
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-snap: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-soft: cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+/* ---------- Base reveal state ---------- */
+.anim,
+.stagger-group .stag-item,
+.reveal-left, .reveal-right, .reveal-bottom, .reveal-top, .reveal-scale, .reveal-fade {
+  opacity: 0;
+  will-change: transform, opacity;
+  transition:
+    opacity var(--dur, 0.85s) var(--ease-out) var(--delay, 0s),
+    transform var(--dur, 0.85s) var(--ease-out) var(--delay, 0s),
+    clip-path var(--dur, 1s) var(--ease-out) var(--delay, 0s);
+}
+
+/* 1. Fade In */
+.anim-fade { transform: none; }
+
+/* 2–5. Fade In Up / Down / Left / Right */
+.anim-up { transform: translate3d(0, 46px, 0); }
+.anim-down { transform: translate3d(0, -40px, 0); }
+.anim-left { transform: translate3d(-56px, 0, 0); }
+.anim-right { transform: translate3d(56px, 0, 0); }
+
+/* 6. Slide In — longer travel, snappier ease */
+.anim-slide {
+  transform: translate3d(0, 110px, 0);
+  opacity: 0.001;
+  transition-timing-function: var(--ease-snap);
+}
+
+/* 7. Scale In */
+.anim-scale { transform: scale(0.86); }
+
+/* 8. Zoom In — deeper origin zoom */
+.anim-zoom {
+  transform: scale(0.55);
+  transition-timing-function: var(--ease-snap);
+}
+
+/* 11. Image Reveal — clip wipe + inner image settle */
+.anim-image {
+  opacity: 1;
+  clip-path: inset(0 100% 0 0);
+  will-change: clip-path;
+}
+.anim-image img {
+  transform: scale(1.16);
+  transition: transform 1.4s var(--ease-out) calc(var(--delay, 0s) + 0.1s);
+}
+.anim-image.is-inview img { transform: scale(1); }
+
+/* Visible state */
+.anim.is-inview,
+.reveal-left.is-inview, .reveal-right.is-inview, .reveal-bottom.is-inview,
+.reveal-top.is-inview, .reveal-scale.is-inview, .reveal-fade.is-inview {
+  opacity: 1;
+  transform: none;
+  clip-path: inset(0 0 0 0);
+}
+
+/* Scroll-reveal utility classes (legacy names, now live) */
+.reveal-left { transform: translate3d(-60px, 0, 0); }
+.reveal-right { transform: translate3d(60px, 0, 0); }
+.reveal-bottom { transform: translate3d(0, 60px, 0); }
+.reveal-top { transform: translate3d(0, -40px, 0); }
+.reveal-scale { transform: scale(0.92); }
+.reveal-fade { transform: none; }
+
+/* ---------- 10. Staggered cards ---------- */
+.stagger-group.is-anim-left .stag-item { transform: translate3d(-40px, 20px, 0); }
+.stagger-group.is-anim-right .stag-item { transform: translate3d(40px, 20px, 0); }
+.stagger-group.is-anim-zoom .stag-item { transform: scale(0.88); }
+.stagger-group.is-anim-scale .stag-item { transform: scale(0.92); }
+.stagger-group:not(.is-anim-left):not(.is-anim-right):not(.is-anim-zoom):not(.is-anim-scale) .stag-item {
+  transform: translate3d(0, 42px, 0);
+}
+.stagger-group .stag-item {
+  transition:
+    opacity 0.75s var(--ease-out) var(--delay, 0s),
+    transform 0.75s var(--ease-out) var(--delay, 0s);
+}
+.stagger-group.is-inview .stag-item {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- 12. Parallax ---------- */
+.parallax { will-change: transform; }
+
+/* ---------- 13. Hover Lift ---------- */
+.hover-lift {
+  transition: transform 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out);
+}
+.hover-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 22px 48px rgba(5, 5, 5, 0.14);
+}
+
+/* ---------- 14. Image Zoom on Hover ---------- */
+.img-zoom { overflow: hidden; }
+.img-zoom img {
+  transition: transform 0.7s var(--ease-out);
+  will-change: transform;
+}
+.img-zoom:hover img { transform: scale(1.08); }
+
+/* ---------- 15. Text Reveal ---------- */
+.text-reveal .tr-clip {
+  display: inline;
+}
+.text-reveal .tr-mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+.text-reveal .tr-word {
+  display: inline-block;
+  transform: translate3d(0, 110%, 0);
+  opacity: 0;
+  transition:
+    transform 0.9s var(--ease-out) var(--delay, 0s),
+    opacity 0.7s var(--ease-out) var(--delay, 0s);
+  will-change: transform;
+}
+.text-reveal.is-inview .tr-word {
+  transform: none;
+  opacity: 1;
+}
+
+/* ---------- Reduced motion: show everything ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .anim,
+  .stagger-group .stag-item,
+  .reveal-left, .reveal-right, .reveal-bottom, .reveal-top, .reveal-scale, .reveal-fade {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+    transition: none !important;
+  }
+  .text-reveal .tr-word {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .anim-image img { transform: none !important; }
+  .parallax { transform: none !important; }
+  .hover-lift:hover { transform: none; }
+  .img-zoom:hover img { transform: none; }
+}

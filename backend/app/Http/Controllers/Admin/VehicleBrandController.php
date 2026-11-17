@@ -1,0 +1,2 @@
+<?php
+namespace App\Http\Controllers\Admin;use App\Models\VehicleBrand;class VehicleBrandController extends CrudController { protected string $model=VehicleBrand::class;protected array $rules=['name'=>'required|string|max:190','slug'=>'nullable|string|max:190','logo'=>'nullable|string|max:500','status'=>'nullable|string|max:50','sort_order'=>'nullable|integer|min:0'];protected array $defaults=['status'=>'active']; }

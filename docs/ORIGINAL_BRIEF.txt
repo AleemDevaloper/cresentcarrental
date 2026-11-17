@@ -1,0 +1,2284 @@
+You are a senior full-stack engineer, UI/UX designer, frontend architect, backend architect, animation engineer, SEO specialist, and performance engineer.
+
+Build a production-ready, premium, high-end car rental website and complete booking management platform for:
+
+BRAND:
+Crescent Car Rental
+
+TAGLINE:
+"Drive Your Next Story."
+
+WEBSITE:
+crescentrentacar.com
+
+TECH STACK:
+
+Frontend:
+- React
+- Vite
+- Bootstrap 5
+- React Bootstrap where appropriate
+- GSAP
+- GSAP ScrollTrigger
+- Framer Motion
+- Lenis smooth scrolling
+- Three.js / React Three Fiber only where it genuinely improves the experience
+- React Router
+- Axios
+- React Hook Form
+- Centralized API service
+- Reusable component architecture
+
+Backend:
+- Laravel
+- Laravel REST API
+- Laravel Sanctum authentication
+- Laravel validation
+- Laravel Policies / Gates
+- Laravel Resources
+- Laravel Services
+- Laravel Events / Notifications where appropriate
+
+Database:
+- MySQL
+
+Storage:
+- Laravel filesystem
+- Public/private media handling
+- Optimized image storage
+
+Deployment-ready:
+- React frontend
+- Laravel API backend
+- MySQL database
+- Production environment configuration
+- API security
+- CORS configuration
+- Environment variables
+
+==================================================
+1. PROJECT OBJECTIVE
+==================================================
+
+Do NOT build this website as a simple static marketing website.
+
+Build it as a complete digital car-rental platform consisting of:
+
+1. Premium customer-facing website
+2. Dynamic vehicle/fleet system
+3. Dynamic pricing system
+4. Real booking system
+5. Contact/inquiry system
+6. Admin authentication
+7. Admin dashboard
+8. Fleet management
+9. Booking management
+10. Customer/lead management
+11. Contact form management
+12. Dynamic homepage content management
+13. Dynamic service management
+14. Dynamic location management
+15. Dynamic promotional content
+16. SEO management
+17. Media management
+18. Website settings
+19. Notifications
+20. Reporting/dashboard analytics
+
+Everything that an administrator should reasonably need to manage should be dynamic rather than hardcoded.
+
+==================================================
+2. DESIGN DIRECTION
+==================================================
+
+The website must feel like a premium automotive/luxury brand.
+
+Do NOT create a generic Bootstrap template.
+
+Visual direction:
+
+Primary:
+- Black
+- Deep charcoal
+- Crescent brand red
+
+Secondary:
+- White
+- Metallic grey
+- Dark grey
+
+The visual identity must match the existing Crescent Car Rental logo.
+
+Use:
+- Large cinematic vehicle imagery
+- Premium dark sections
+- Red accent lighting
+- Metallic typography
+- Glassmorphism only where tasteful
+- Soft shadows
+- Subtle gradients
+- Premium cards
+- Large whitespace
+- Strong visual hierarchy
+- Smooth transitions
+- Editorial automotive layouts
+- High-quality imagery
+- Elegant micro-interactions
+
+The website should feel closer to a premium automotive experience than a normal car-rental website.
+
+Avoid:
+- Excessive gradients
+- Cheap-looking animations
+- Excessive glowing effects
+- Overuse of glassmorphism
+- Generic Bootstrap cards
+- Excessive rounded corners
+- Cluttered layouts
+- Random animations
+- Slow-loading WebGL effects
+
+The design should feel:
+- Premium
+- Trustworthy
+- Modern
+- Cinematic
+- Professional
+- Luxury
+- Fast
+- Conversion-focused
+
+==================================================
+3. WEBSITE EXPERIENCE
+==================================================
+
+Build the website around the concept:
+
+"Drive Your Next Story."
+
+The visitor should immediately understand:
+
+- What Crescent Car Rental offers
+- Which vehicles are available
+- Where Crescent operates
+- Rental options
+- Pricing
+- How booking works
+- How to contact Crescent
+- How to request a booking
+
+The website should guide the visitor naturally:
+
+DISCOVER
+↓
+EXPLORE CARS
+↓
+CHECK DETAILS
+↓
+SELECT RENTAL OPTIONS
+↓
+BOOK
+↓
+RECEIVE CONFIRMATION
+
+==================================================
+4. MAIN WEBSITE PAGES
+==================================================
+
+Create:
+
+/
+/home
+
+/about
+
+/cars
+
+/cars/:slug
+
+/services
+
+/services/:slug
+
+/locations
+
+/locations/:slug
+
+/pricing
+
+/book
+
+/contact
+
+/faq
+
+/blog
+
+/blog/:slug
+
+/privacy-policy
+
+/terms-and-conditions
+
+/booking-confirmation/:reference
+
+404 page
+
+Additional pages should be easy to add later.
+
+==================================================
+5. HOMEPAGE
+==================================================
+
+Create an exceptional cinematic homepage.
+
+SECTION 1 — HERO
+
+Full-screen premium automotive hero.
+
+Include:
+
+Crescent Car Rental logo
+
+Headline:
+"DRIVE YOUR NEXT STORY."
+
+Supporting text:
+"Premium cars for every journey."
+
+Primary CTA:
+"BOOK YOUR RIDE"
+
+Secondary CTA:
+"EXPLORE OUR CARS"
+
+Include a premium vehicle visual.
+
+Hero should support:
+- Desktop
+- Tablet
+- Mobile
+
+Use GSAP/Framer Motion carefully.
+
+Do not make the hero animation so heavy that it delays the page.
+
+==================================================
+6. HERO BOOKING WIDGET
+==================================================
+
+Place a booking/search interface inside or immediately below the hero.
+
+Fields:
+
+Pickup Location
+Drop-off Location
+Pickup Date
+Pickup Time
+Return Date
+Return Time
+Vehicle Category
+
+CTA:
+
+"SEARCH CARS"
+
+The widget should actually work.
+
+After submission:
+
+Frontend calls Laravel API.
+
+Laravel checks:
+
+- Location
+- Dates
+- Vehicle availability
+- Booking conflicts
+- Pricing rules
+
+Then return available vehicles.
+
+==================================================
+7. FEATURED VEHICLES
+==================================================
+
+Create a dynamic fleet section.
+
+Example vehicles:
+
+Toyota Yaris
+Toyota Corolla
+Toyota Fortuner
+Audi
+BMW
+Mercedes-Benz
+
+IMPORTANT:
+
+Do not hardcode these permanently.
+
+All vehicles must come from MySQL.
+
+Admin must be able to:
+
+ADD
+EDIT
+DELETE
+ACTIVATE
+DEACTIVATE
+FEATURE
+CHANGE PRICE
+CHANGE IMAGE
+CHANGE DESCRIPTION
+CHANGE CATEGORY
+
+Each vehicle should have:
+
+- Name
+- Brand
+- Model
+- Year
+- Category
+- Transmission
+- Fuel type
+- Seats
+- Doors
+- Mileage policy
+- Daily price
+- Weekly price
+- Monthly price
+- Deposit
+- Driver availability
+- Self-drive availability
+- Location
+- Description
+- Features
+- Main image
+- Gallery
+- Status
+- Featured status
+
+==================================================
+8. VEHICLE DETAIL PAGE
+==================================================
+
+Create a premium vehicle detail experience.
+
+Example:
+
+Toyota Fortuner
+
+Include:
+
+Large image gallery
+
+Vehicle name
+
+Category
+
+Price
+
+Availability
+
+Specifications:
+
+Seats
+Doors
+Transmission
+Fuel
+Air Conditioning
+Luggage
+
+Features:
+
+Premium Interior
+Safety Features
+Comfort
+Performance
+
+Pricing:
+
+Daily
+Weekly
+Monthly
+
+CTA:
+
+"BOOK THIS CAR"
+
+"ASK ABOUT THIS CAR"
+
+When clicking BOOK THIS CAR:
+
+Open booking flow with the selected vehicle already populated.
+
+==================================================
+9. DYNAMIC PRICING
+==================================================
+
+Pricing must come from backend.
+
+Do not hardcode prices inside React.
+
+Database should support:
+
+daily_price
+weekly_price
+monthly_price
+weekend_price
+holiday_price
+deposit
+driver_fee
+extra_km_fee
+late_return_fee
+
+Build a pricing service in Laravel.
+
+Example:
+
+Rental duration:
+1 day → daily price
+
+7 days → weekly price
+
+30 days → monthly price
+
+Allow future expansion for:
+
+Seasonal pricing
+Weekend pricing
+Holiday pricing
+Promotional pricing
+Location-based pricing
+
+==================================================
+10. BOOKING SYSTEM
+==================================================
+
+Build a complete real booking system.
+
+CUSTOMER FLOW:
+
+1. Select vehicle
+2. Select pickup location
+3. Select drop-off location
+4. Select pickup date
+5. Select return date
+6. Select pickup time
+7. Select return time
+8. Select rental type
+9. Enter customer information
+10. Review booking
+11. Submit booking
+12. Generate booking reference
+13. Show confirmation
+
+Customer information:
+
+Full Name
+Phone
+Email
+CNIC / ID if required
+Address
+Notes
+
+Booking information:
+
+Vehicle
+Pickup location
+Drop-off location
+Pickup date
+Return date
+Pickup time
+Return time
+Rental duration
+Base price
+Additional charges
+Discount
+Total price
+
+Generate unique booking reference:
+
+Example:
+
+CR-2026-000001
+
+==================================================
+11. BOOKING STATUS
+==================================================
+
+Booking statuses:
+
+Pending
+Confirmed
+In Progress
+Completed
+Cancelled
+Rejected
+
+Admin can change booking status.
+
+Every status change should be logged.
+
+==================================================
+12. AVAILABILITY ENGINE
+==================================================
+
+This is critical.
+
+A vehicle cannot be booked by two customers for overlapping dates/times.
+
+Backend must check:
+
+Existing bookings
+Booking status
+Pickup date
+Return date
+Vehicle status
+
+Prevent double booking.
+
+Availability checking must happen on the server.
+
+Never rely only on frontend validation.
+
+Use database transactions where required.
+
+==================================================
+13. BOOKING ADMIN
+==================================================
+
+Admin dashboard should show:
+
+Today's bookings
+Upcoming bookings
+Pending bookings
+Confirmed bookings
+Active rentals
+Completed rentals
+Cancelled bookings
+Revenue
+Available vehicles
+Unavailable vehicles
+
+Create a booking table with:
+
+Reference
+Customer
+Vehicle
+Pickup
+Return
+Dates
+Amount
+Status
+Created At
+Actions
+
+Actions:
+
+View
+Edit
+Confirm
+Reject
+Cancel
+Complete
+Print
+Contact Customer
+
+==================================================
+14. BOOKING DETAIL
+==================================================
+
+Admin booking detail page should show:
+
+Booking reference
+
+Customer information
+
+Vehicle information
+
+Rental information
+
+Pricing breakdown
+
+Payment status
+
+Booking status
+
+Admin notes
+
+Customer notes
+
+Timeline
+
+Example:
+
+Booking Created
+↓
+Confirmed
+↓
+Vehicle Prepared
+↓
+Rental Started
+↓
+Rental Completed
+
+==================================================
+15. CONTACT FORM
+==================================================
+
+Create a professional contact form.
+
+Fields:
+
+Name
+Email
+Phone
+Subject
+Message
+
+Store every submission in MySQL.
+
+Admin must be able to:
+
+View
+Search
+Filter
+Mark as read
+Mark as contacted
+Archive
+Delete
+Add notes
+
+Statuses:
+
+New
+Read
+Contacted
+Resolved
+Archived
+
+Dashboard should show unread contact submissions.
+
+==================================================
+16. INQUIRY / LEAD MANAGEMENT
+==================================================
+
+Any customer interaction should be trackable.
+
+Lead sources:
+
+Website
+Google Ads
+Facebook
+Instagram
+WhatsApp
+Direct
+Referral
+
+Lead fields:
+
+Name
+Phone
+Email
+Source
+Interest
+Vehicle
+Location
+Message
+Status
+Created date
+
+Statuses:
+
+New
+Contacted
+Qualified
+Converted
+Lost
+
+This should eventually integrate with a CRM.
+
+==================================================
+17. ADMIN AUTHENTICATION
+==================================================
+
+Create secure admin login.
+
+Admin URL:
+
+/admin/login
+
+Fields:
+
+Email
+Password
+
+Features:
+
+Login
+Logout
+Forgot password
+Reset password
+Remember session
+Session protection
+
+Use Laravel Sanctum.
+
+Do not store passwords manually or insecurely.
+
+Use Laravel's built-in hashing/authentication.
+
+==================================================
+18. ADMIN DASHBOARD
+==================================================
+
+Create a premium admin dashboard.
+
+Dashboard cards:
+
+Total Bookings
+Pending Bookings
+Confirmed Bookings
+Completed Rentals
+Total Revenue
+Available Vehicles
+Total Vehicles
+New Contacts
+New Leads
+
+Charts:
+
+Bookings by month
+Revenue by month
+Vehicle popularity
+Booking status
+Lead sources
+
+Recent activity:
+
+Recent bookings
+Recent inquiries
+Recent contacts
+
+==================================================
+19. ADMIN SIDEBAR
+==================================================
+
+Sidebar:
+
+Dashboard
+
+Bookings
+├── All Bookings
+├── Pending
+├── Confirmed
+├── Active Rentals
+├── Completed
+└── Cancelled
+
+Fleet
+├── All Cars
+├── Add Car
+├── Categories
+├── Brands
+└── Availability
+
+Pricing
+├── Base Pricing
+├── Seasonal Pricing
+├── Discounts
+└── Additional Charges
+
+Customers
+├── All Customers
+└── Leads
+
+Contacts
+
+Services
+
+Locations
+
+Homepage Content
+
+Blog
+
+Media Library
+
+Reviews
+
+FAQ
+
+SEO
+
+Notifications
+
+Reports
+
+Settings
+
+Admin Users
+
+Activity Logs
+
+==================================================
+20. DYNAMIC FLEET MANAGEMENT
+==================================================
+
+Admin can create a new vehicle without developer involvement.
+
+ADD VEHICLE FORM:
+
+Vehicle Name
+Brand
+Model
+Year
+Category
+Description
+Short Description
+Daily Price
+Weekly Price
+Monthly Price
+Deposit
+Transmission
+Fuel
+Seats
+Doors
+Location
+Driver Option
+Self Drive
+Featured
+Status
+
+Image upload.
+
+Gallery upload.
+
+Features:
+
+Air Conditioning
+Bluetooth
+Navigation
+Leather Seats
+Sunroof
+Parking Sensors
+Camera
+Cruise Control
+etc.
+
+Admin can add custom features.
+
+==================================================
+21. DYNAMIC SERVICES
+==================================================
+
+Admin can manage services.
+
+Example:
+
+Daily Car Rental
+Monthly Car Rental
+Airport Transfers
+Corporate Car Rental
+Travel Rentals
+Luxury Car Rental
+Chauffeur Service
+
+Each service:
+
+Title
+Slug
+Description
+Icon
+Image
+Price information
+Status
+Sort order
+SEO title
+SEO description
+
+==================================================
+22. DYNAMIC LOCATIONS
+==================================================
+
+Admin can add:
+
+Lahore
+Islamabad
+Hunza
+Skardu
+etc.
+
+Each location:
+
+Name
+Slug
+Description
+Image
+Address
+Phone
+Service availability
+Latitude
+Longitude
+SEO title
+SEO description
+Status
+
+==================================================
+23. DYNAMIC HOMEPAGE
+==================================================
+
+Do not hardcode all homepage content.
+
+Admin should control:
+
+Hero title
+Hero subtitle
+Hero image/video
+CTA text
+Featured vehicles
+Services
+Why choose us
+Locations
+Testimonials
+FAQ
+Promotional banners
+
+Admin should be able to enable/disable sections.
+
+==================================================
+24. REVIEWS / TESTIMONIALS
+==================================================
+
+Create testimonial management.
+
+Admin can add:
+
+Customer name
+Customer image
+Rating
+Review
+Location
+Status
+
+Homepage automatically displays approved testimonials.
+
+==================================================
+25. FAQ MANAGEMENT
+==================================================
+
+Admin can create:
+
+Question
+Answer
+Category
+Sort order
+Status
+
+Frontend automatically displays active FAQs.
+
+==================================================
+26. BLOG SYSTEM
+==================================================
+
+Create a simple CMS blog.
+
+Admin can create:
+
+Title
+Slug
+Featured image
+Excerpt
+Content
+Author
+Category
+Tags
+SEO title
+SEO description
+Publish date
+Status
+
+Frontend:
+
+/blog
+/blog/:slug
+
+Use SEO-friendly URLs.
+
+==================================================
+27. MEDIA MANAGEMENT
+==================================================
+
+Create media library.
+
+Admin can upload:
+
+Vehicle images
+Hero images
+Service images
+Blog images
+Gallery images
+
+Store:
+
+Filename
+Path
+Type
+Size
+Alt text
+Uploaded by
+Created date
+
+Use image optimization.
+
+Do not load huge original images unnecessarily.
+
+==================================================
+28. SEO SYSTEM
+==================================================
+
+SEO must be built from the beginning.
+
+Every important page should support:
+
+SEO title
+Meta description
+Canonical URL
+Open Graph title
+Open Graph description
+Open Graph image
+Twitter card information
+
+Generate:
+
+sitemap.xml
+
+robots.txt
+
+Use semantic HTML.
+
+Use:
+
+H1
+H2
+H3
+
+Correct heading hierarchy.
+
+Add structured data where appropriate:
+
+Organization
+LocalBusiness
+CarRental
+Product/Vehicle where appropriate
+BreadcrumbList
+FAQPage
+Article
+
+Do not create fake structured data.
+
+==================================================
+29. GOOGLE ADS LANDING PAGE SUPPORT
+==================================================
+
+The website must be optimized for Google Search Ads.
+
+Create dedicated landing pages such as:
+
+/car-rental-lahore
+/car-rental-islamabad
+/fortuner-for-rent
+/yaris-for-rent
+/luxury-car-rental
+/airport-car-rental
+
+Each page should have:
+
+Relevant headline
+Relevant vehicle/service
+Phone CTA
+WhatsApp CTA
+Booking CTA
+Trust points
+FAQs
+Location information
+
+Track:
+
+Phone click
+WhatsApp click
+Booking submission
+Contact form submission
+
+==================================================
+30. ANALYTICS
+==================================================
+
+Prepare the frontend for:
+
+Google Analytics 4
+Google Tag Manager
+Google Ads conversion tracking
+Meta Pixel
+
+Create a centralized analytics utility.
+
+Example:
+
+trackEvent('booking_started')
+trackEvent('booking_completed')
+trackEvent('phone_click')
+trackEvent('whatsapp_click')
+trackEvent('contact_form_submitted')
+
+Do not scatter tracking code randomly throughout components.
+
+==================================================
+31. WHATSAPP
+==================================================
+
+Add WhatsApp CTA throughout the website.
+
+Create reusable WhatsApp button.
+
+Allow dynamic pre-filled message.
+
+Example:
+
+"Hello Crescent Car Rental, I am interested in renting the Toyota Fortuner."
+
+The message should automatically include:
+
+Vehicle
+Date
+Location
+
+where available.
+
+==================================================
+32. PHONE CTA
+==================================================
+
+Create reusable phone CTA.
+
+Phone:
+
++92 300 6277997
+
+On mobile:
+
+tel:+923006277997
+
+Track phone clicks as analytics events.
+
+==================================================
+33. ANIMATIONS
+==================================================
+
+Use GSAP and Framer Motion strategically.
+
+Animations should include:
+
+Hero entrance
+Text reveal
+Vehicle image reveal
+Scroll-based section transitions
+Card hover
+Image parallax
+Number counters
+Section reveal
+CTA hover
+Navigation transitions
+
+GSAP ScrollTrigger can be used for:
+
+Hero storytelling
+Vehicle showcase
+Horizontal scroll sections
+Parallax
+
+Framer Motion can be used for:
+
+Component transitions
+Modal animations
+Page transitions
+Micro-interactions
+
+Lenis can be used for smooth scrolling.
+
+IMPORTANT:
+
+Do not animate everything.
+
+Animation should communicate hierarchy and premium quality.
+
+==================================================
+34. THREE.JS / WEBGL
+==================================================
+
+Use React Three Fiber / Three.js only where appropriate.
+
+Possible uses:
+
+Hero vehicle visualization
+Interactive 3D vehicle rotation
+Subtle environment effect
+
+However:
+
+Do NOT make Three.js mandatory for the whole website.
+
+Use lazy loading.
+
+Dynamic import WebGL components.
+
+If WebGL is unavailable or device performance is weak:
+
+Show a high-quality static fallback.
+
+==================================================
+35. PERFORMANCE
+==================================================
+
+Performance is critical.
+
+Implement:
+
+Lazy loading
+Code splitting
+Dynamic imports
+Image optimization
+WebP/AVIF where possible
+Responsive images
+Proper image dimensions
+Route-level lazy loading
+Lazy WebGL
+Lazy animation libraries where possible
+Avoid unnecessary re-renders
+Memoization where appropriate
+
+Target:
+
+Fast first load
+Fast mobile experience
+Good Core Web Vitals
+
+Do not sacrifice performance just to create visual effects.
+
+==================================================
+36. ACCESSIBILITY
+==================================================
+
+Implement:
+
+Semantic HTML
+ARIA labels where required
+Keyboard navigation
+Visible focus states
+Accessible forms
+Accessible buttons
+Alt text
+Color contrast
+Reduced motion support
+
+Respect:
+
+prefers-reduced-motion
+
+When reduced motion is enabled:
+
+Disable or significantly reduce:
+
+Parallax
+Large transitions
+Scroll animations
+WebGL motion
+
+==================================================
+37. RESPONSIVE DESIGN
+==================================================
+
+The website must be fully responsive.
+
+Breakpoints:
+
+Mobile
+Tablet
+Laptop
+Desktop
+Large Desktop
+
+Test:
+
+320px
+375px
+425px
+768px
+1024px
+1280px
+1440px
+1920px
+
+Mobile should not simply be a compressed desktop.
+
+Create a proper mobile layout.
+
+==================================================
+38. DATABASE ARCHITECTURE
+==================================================
+
+Create normalized MySQL tables.
+
+Suggested tables:
+
+users
+
+admins
+
+vehicles
+
+vehicle_categories
+
+vehicle_brands
+
+vehicle_images
+
+vehicle_features
+
+vehicle_feature_vehicle
+
+locations
+
+services
+
+bookings
+
+booking_items
+
+booking_status_history
+
+customers
+
+leads
+
+contact_submissions
+
+pricing_rules
+
+discounts
+
+reviews
+
+faqs
+
+blog_posts
+
+blog_categories
+
+media
+
+homepage_sections
+
+website_settings
+
+seo_metadata
+
+notifications
+
+activity_logs
+
+admin_notes
+
+payment_records
+
+==================================================
+39. LARAVEL ARCHITECTURE
+==================================================
+
+Use clean Laravel architecture.
+
+Controllers:
+
+AuthController
+VehicleController
+BookingController
+CustomerController
+LeadController
+ContactController
+ServiceController
+LocationController
+PricingController
+ReviewController
+FaqController
+BlogController
+MediaController
+DashboardController
+SettingsController
+SeoController
+
+Use:
+
+Form Requests
+API Resources
+Policies
+Services
+Repositories only where justified
+Events
+Jobs
+Notifications
+
+Do not put all business logic inside controllers.
+
+Controllers should remain thin.
+
+==================================================
+40. API STRUCTURE
+==================================================
+
+Use versioned API.
+
+Example:
+
+/api/v1/
+
+Public:
+
+GET /vehicles
+GET /vehicles/{slug}
+GET /services
+GET /services/{slug}
+GET /locations
+GET /locations/{slug}
+GET /featured-vehicles
+POST /availability
+POST /bookings
+POST /contact
+POST /leads
+GET /faqs
+GET /reviews
+GET /blog
+
+Admin:
+
+POST /admin/login
+POST /admin/logout
+
+GET /admin/dashboard
+
+GET /admin/bookings
+GET /admin/bookings/{id}
+PATCH /admin/bookings/{id}
+
+GET /admin/vehicles
+POST /admin/vehicles
+PUT /admin/vehicles/{id}
+DELETE /admin/vehicles/{id}
+
+GET /admin/contacts
+PATCH /admin/contacts/{id}
+
+GET /admin/leads
+
+GET /admin/services
+POST /admin/services
+
+GET /admin/locations
+POST /admin/locations
+
+etc.
+
+==================================================
+41. SECURITY
+==================================================
+
+Implement:
+
+CSRF protection where applicable
+Sanctum authentication
+Authorization
+Policies
+Rate limiting
+Input validation
+Mass assignment protection
+File upload validation
+MIME validation
+Maximum upload sizes
+SQL injection protection through Eloquent/query builder
+XSS protection
+Secure password hashing
+Secure API responses
+
+Never expose:
+
+Database credentials
+API secrets
+Admin secrets
+
+in frontend code.
+
+==================================================
+42. ADMIN ACTIVITY LOG
+==================================================
+
+Record important admin actions.
+
+Example:
+
+Admin:
+admin@example.com
+
+Action:
+Updated Vehicle
+
+Vehicle:
+Toyota Fortuner
+
+Old Price:
+25000
+
+New Price:
+30000
+
+Date:
+2026-09-23
+
+IP:
+logged securely where appropriate
+
+Activity types:
+
+Created
+Updated
+Deleted
+Status changed
+Booking updated
+Price changed
+Login
+Logout
+
+==================================================
+43. NOTIFICATIONS
+==================================================
+
+When a customer creates a booking:
+
+Admin notification:
+
+"New booking received: CR-2026-000001"
+
+When contact form submitted:
+
+"New contact inquiry received."
+
+When booking confirmed:
+
+Customer receives confirmation.
+
+Prepare notification architecture for:
+
+Email
+Admin dashboard
+Future WhatsApp integration
+Future SMS integration
+
+==================================================
+44. BOOKING EMAIL
+==================================================
+
+After booking:
+
+Send confirmation email containing:
+
+Booking reference
+Customer
+Vehicle
+Pickup
+Drop-off
+Dates
+Times
+Estimated total
+Contact details
+
+Admin receives booking notification.
+
+==================================================
+45. ADMIN SEARCH & FILTERING
+==================================================
+
+All major tables should support:
+
+Search
+Sort
+Pagination
+Filters
+Date filtering
+Status filtering
+
+Bookings:
+
+Search by:
+Booking ID
+Customer
+Phone
+Vehicle
+
+Contacts:
+
+Search by:
+Name
+Email
+Phone
+
+Vehicles:
+
+Search by:
+Name
+Brand
+Category
+
+==================================================
+46. ADMIN UI
+==================================================
+
+Admin UI should be completely different from customer-facing website.
+
+Use:
+
+Professional dashboard
+Sidebar
+Top navigation
+Data tables
+Cards
+Charts
+Modals
+Drawers
+Forms
+Confirmation dialogs
+Toast notifications
+
+Admin must feel like a real business management system.
+
+==================================================
+47. ERROR HANDLING
+==================================================
+
+Frontend should handle:
+
+Loading
+Empty
+Error
+Success
+Unauthorized
+Forbidden
+Validation errors
+Network errors
+Server errors
+
+Never show:
+
+"Something went wrong"
+
+without useful context.
+
+Show actionable messages.
+
+==================================================
+48. FORM UX
+==================================================
+
+All forms should have:
+
+Inline validation
+Loading state
+Success state
+Error state
+Disabled submit while processing
+
+Example:
+
+Submitting...
+
+Booking Confirmed!
+
+Booking Reference:
+CR-2026-000001
+
+==================================================
+49. CODE ARCHITECTURE
+==================================================
+
+Frontend structure:
+
+src/
+
+components/
+pages/
+layouts/
+features/
+hooks/
+services/
+api/
+context/
+utils/
+constants/
+assets/
+animations/
+routes/
+styles/
+
+Use feature-oriented organization where useful.
+
+Example:
+
+features/
+  booking/
+  vehicles/
+  contact/
+  auth/
+  admin/
+
+Create reusable components:
+
+Button
+Modal
+Input
+Select
+DatePicker
+VehicleCard
+VehicleGallery
+BookingForm
+BookingSummary
+SectionHeading
+Navbar
+Footer
+CTA
+LoadingSpinner
+EmptyState
+ErrorState
+
+==================================================
+50. CENTRALIZED CONFIGURATION
+==================================================
+
+Create centralized configuration.
+
+Example:
+
+brandConfig.js
+
+Contains:
+
+brandName
+tagline
+phone
+email
+website
+socialLinks
+colors
+defaultSEO
+
+Do not duplicate:
+
+phone numbers
+URLs
+brand names
+CTA text
+
+throughout the application.
+
+==================================================
+51. SOCIAL MEDIA
+==================================================
+
+Add:
+
+Facebook
+Instagram
+TikTok
+YouTube
+
+Use configurable links from admin settings.
+
+Do not hardcode social URLs across components.
+
+==================================================
+52. FOOTER
+==================================================
+
+Premium footer.
+
+Include:
+
+Logo
+Tagline
+Quick Links
+Services
+Locations
+Contact
+Phone
+Email
+Social media
+Booking CTA
+Copyright
+Privacy Policy
+Terms
+
+==================================================
+53. MOBILE NAVIGATION
+==================================================
+
+Mobile menu should include:
+
+Home
+Cars
+Services
+Locations
+About
+Contact
+Book Now
+
+Sticky bottom mobile CTA:
+
+Call
+WhatsApp
+Book Now
+
+Only show where appropriate and ensure it does not obstruct content.
+
+==================================================
+54. DATABASE SEEDERS
+==================================================
+
+Create development seed data.
+
+Example:
+
+Vehicles:
+
+Toyota Yaris
+Toyota Corolla
+Toyota Fortuner
+Audi
+BMW
+Mercedes-Benz
+
+Locations:
+
+Lahore
+Islamabad
+Hunza
+Skardu
+
+Services:
+
+Daily Rental
+Monthly Rental
+Airport Transfer
+Corporate Rental
+Travel Rental
+Luxury Rental
+
+Create realistic sample bookings and customers.
+
+Use factories and seeders.
+
+==================================================
+55. ADMIN SETTINGS
+==================================================
+
+Admin should control:
+
+Business name
+Logo
+Favicon
+Phone
+Email
+WhatsApp
+Address
+Social links
+Business hours
+Currency
+Tax
+Booking settings
+Cancellation settings
+SEO defaults
+Analytics IDs
+Google Ads conversion IDs
+Meta Pixel ID
+
+==================================================
+56. CURRENCY
+==================================================
+
+Primary currency:
+
+PKR
+
+Display:
+
+PKR
+
+Design the pricing architecture so additional currencies can be supported later.
+
+==================================================
+57. BOOKING BUSINESS RULES
+==================================================
+
+Implement configurable rules:
+
+Minimum rental duration
+Maximum rental duration
+Advance booking requirement
+Cancellation policy
+Deposit
+Late return fee
+Extra mileage fee
+Driver fee
+Airport fee
+
+Do not hardcode business rules in React.
+
+Backend must control them.
+
+==================================================
+58. FUTURE PAYMENT ARCHITECTURE
+==================================================
+
+Do not require online payment for V1 unless configured.
+
+However, design booking architecture so future gateways can be added.
+
+Potential future:
+
+Stripe
+PayFast
+JazzCash
+Easypaisa
+Bank transfer
+
+Booking should support:
+
+Payment Pending
+Partially Paid
+Paid
+Refunded
+
+==================================================
+59. SEO CONTENT
+==================================================
+
+Create SEO-friendly pages targeting searches such as:
+
+Car Rental Lahore
+Rent a Car Lahore
+Car Rental Islamabad
+Toyota Fortuner Rental
+Toyota Yaris Rental
+Luxury Car Rental
+Airport Car Rental
+Monthly Car Rental
+Car Rental Pakistan
+
+Do not keyword-stuff.
+
+Write natural, useful content.
+
+==================================================
+60. GOOGLE SEARCH ADS CONVERSION
+==================================================
+
+Prepare dedicated conversion points:
+
+Book Now
+Call Now
+WhatsApp
+Contact Form
+Booking Form
+
+Every important CTA should be trackable.
+
+==================================================
+61. FINAL UX FLOW
+==================================================
+
+CUSTOMER:
+
+Homepage
+↓
+Explore Cars
+↓
+Select Vehicle
+↓
+Check Availability
+↓
+Choose Dates
+↓
+Enter Details
+↓
+Review Price
+↓
+Submit Booking
+↓
+Booking Reference
+↓
+Confirmation
+
+ADMIN:
+
+Login
+↓
+Dashboard
+↓
+See New Booking
+↓
+Open Booking
+↓
+Review Customer
+↓
+Check Vehicle
+↓
+Confirm Booking
+↓
+Customer Notification
+↓
+Manage Rental
+↓
+Complete Booking
+
+==================================================
+62. QUALITY REQUIREMENTS
+==================================================
+
+The final system must be:
+
+Production-ready
+Maintainable
+Scalable
+Secure
+Responsive
+SEO-friendly
+Accessible
+Fast
+Modular
+API-driven
+Database-driven
+
+Do not create fake functionality.
+
+Do not create buttons that do nothing.
+
+Do not hardcode dynamic data.
+
+Do not use mock data as the permanent implementation.
+
+Every major frontend feature must connect to the Laravel backend.
+
+==================================================
+63. DEVELOPMENT PROCESS
+==================================================
+
+Build in phases.
+
+PHASE 1:
+Project architecture
+React setup
+Laravel setup
+MySQL
+Authentication
+API architecture
+
+PHASE 2:
+Database
+Models
+Migrations
+Seeders
+Relationships
+
+PHASE 3:
+Public website
+Navbar
+Hero
+Homepage
+Cars
+Services
+Locations
+About
+Contact
+
+PHASE 4:
+Booking system
+Availability
+Pricing
+Booking workflow
+Confirmation
+
+PHASE 5:
+Admin dashboard
+Bookings
+Vehicles
+Customers
+Contacts
+Services
+Locations
+
+PHASE 6:
+CMS
+Homepage management
+Blog
+FAQ
+Reviews
+SEO
+Media
+
+PHASE 7:
+Analytics
+Google Analytics
+Google Ads tracking
+Meta Pixel
+Phone tracking
+WhatsApp tracking
+
+PHASE 8:
+Performance
+Lazy loading
+Image optimization
+Code splitting
+WebGL optimization
+
+PHASE 9:
+Security
+Authorization
+Validation
+Rate limiting
+File security
+
+PHASE 10:
+Testing
+API tests
+Booking tests
+Availability tests
+Authentication tests
+Responsive testing
+
+==================================================
+64. DOCUMENTATION
+==================================================
+
+Maintain:
+
+PROJECT_MEMORY.md
+PHASE_STATUS.md
+CHANGELOG.md
+TODO.md
+DB_SCHEMA_NOTES.md
+API_DOCUMENTATION.md
+DEPLOYMENT_NOTES.md
+
+Update these files throughout development.
+
+PHASE_STATUS.md must clearly state:
+
+Completed
+In Progress
+Blocked
+Next
+
+==================================================
+65. IMPORTANT DEVELOPMENT RULE
+==================================================
+
+Before implementing a feature:
+
+1. Understand the existing architecture.
+2. Check existing components.
+3. Reuse existing components.
+4. Do not duplicate functionality.
+5. Follow the existing design system.
+6. Check database relationships.
+7. Check API contracts.
+8. Implement validation.
+9. Test the feature.
+10. Update documentation.
+
+Never randomly rewrite working parts of the application.
+
+==================================================
+66. FINAL EXPECTATION
+==================================================
+
+The final result should feel like a premium international car-rental platform rather than a simple local rental website.
+
+The customer-facing experience should combine:
+
+Luxury automotive design
++
+Interactive storytelling
++
+Smooth animation
++
+Real vehicle catalog
++
+Real availability
++
+Real pricing
++
+Real booking
++
+Real contact management
++
+Real admin management
++
+SEO
++
+Google Ads conversion tracking
++
+High performance
+
+The admin should be able to operate the website without a developer.
+
+For example:
+
+ADMIN LOGS IN
+↓
+Adds "BMW 5 Series"
+↓
+Uploads images
+↓
+Sets daily price = PKR X
+↓
+Sets monthly price = PKR X
+↓
+Adds specifications
+↓
+Publishes vehicle
+↓
+BMW immediately appears on website
+↓
+Customer selects BMW
+↓
+System checks availability
+↓
+Customer submits booking
+↓
+Admin receives booking
+↓
+Admin confirms booking
+
+The same principle must apply to:
+
+Vehicles
+Prices
+Services
+Locations
+Homepage content
+FAQs
+Reviews
+Blog posts
+Promotions
+SEO information
+
+Everything should be database-driven.
+
+Build the system cleanly enough that additional features can be added later without rewriting the entire application.

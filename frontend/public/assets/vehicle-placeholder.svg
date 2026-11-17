@@ -1,0 +1,18 @@
+<svg width="1200" height="700" viewBox="0 0 1200 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <linearGradient id="bg" x1="80" y1="40" x2="1120" y2="680" gradientUnits="userSpaceOnUse"><stop stop-color="#151515"/><stop offset="1" stop-color="#050505"/></linearGradient>
+  <linearGradient id="body" x1="285" y1="370" x2="920" y2="500" gradientUnits="userSpaceOnUse"><stop stop-color="#ff1f18"/><stop offset="0.52" stop-color="#c80808"/><stop offset="1" stop-color="#610505"/></linearGradient>
+  <linearGradient id="glass" x1="465" y1="275" x2="738" y2="385" gradientUnits="userSpaceOnUse"><stop stop-color="#b9c7cf" stop-opacity=".58"/><stop offset="1" stop-color="#151b21" stop-opacity=".86"/></linearGradient>
+  <filter id="shadow" x="170" y="240" width="860" height="360" filterUnits="userSpaceOnUse"><feGaussianBlur stdDeviation="25"/></filter>
+</defs>
+<rect width="1200" height="700" rx="24" fill="url(#bg)"/>
+<ellipse cx="604" cy="543" rx="370" ry="42" fill="#000" opacity=".75" filter="url(#shadow)"/>
+<path d="M277 469C309 397 373 358 454 344L529 280C548 264 571 255 596 255H710C739 255 765 264 786 282L852 339C908 350 958 378 995 426L1027 469V501H951C941 443 899 407 848 407C798 407 756 443 745 501H457C447 443 404 407 354 407C304 407 262 443 251 501H205V480L277 469Z" fill="url(#body)"/>
+<path d="M476 341L546 287C560 276 577 270 595 270H700C725 270 746 277 764 293L818 341H476Z" fill="url(#glass)"/>
+<path d="M599 270V341" stroke="#111" stroke-width="8" opacity=".8"/>
+<path d="M278 468H992" stroke="#ff736d" stroke-width="5" opacity=".6"/>
+<circle cx="355" cy="492" r="70" fill="#090909" stroke="#2b2b2b" stroke-width="12"/><circle cx="355" cy="492" r="35" fill="#777"/><circle cx="848" cy="492" r="70" fill="#090909" stroke="#2b2b2b" stroke-width="12"/><circle cx="848" cy="492" r="35" fill="#777"/>
+<path d="M981 430L1020 446L1002 466H955" fill="#f9f9f9" opacity=".9"/>
+<path d="M221 465L269 447" stroke="#f9f9f9" stroke-width="12" stroke-linecap="round" opacity=".85"/>
+<text x="600" y="630" fill="#575757" font-family="Arial" font-size="24" letter-spacing="10" text-anchor="middle">CRESCENT • DRIVE YOUR NEXT STORY</text>
+</svg>

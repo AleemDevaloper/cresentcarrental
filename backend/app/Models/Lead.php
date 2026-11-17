@@ -1,0 +1,3 @@
+<?php
+namespace App\Models;use Illuminate\Database\Eloquent\Model;
+class Lead extends Model { protected $fillable=['name','phone','email','source','interest','vehicle_id','location_id','message','status','admin_notes','assigned_to','next_follow_up_at']; protected function casts():array{return ['next_follow_up_at'=>'datetime'];} public function vehicle(){return $this->belongsTo(Vehicle::class);} public function location(){return $this->belongsTo(Location::class);} public function assignee(){return $this->belongsTo(User::class,'assigned_to');} public function followUps(){return $this->hasMany(LeadFollowUp::class)->latest('scheduled_at');} }
