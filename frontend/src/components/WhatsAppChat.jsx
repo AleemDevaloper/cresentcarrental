@@ -4,7 +4,7 @@ import brand from '../config/brandConfig';
 export default function WhatsAppChat() {
   return (
     <motion.a
-      href={brand.whatsappHref || `https://wa.me/${brand.phoneRaw || '923006277997'}`}
+      href={`https://wa.me/${brand.whatsappNumber}`}
       target="_blank"
       rel="noopener noreferrer"
       className="whatsapp-fab"

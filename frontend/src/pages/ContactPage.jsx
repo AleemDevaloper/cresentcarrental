@@ -31,7 +31,7 @@ export default function ContactPage() {
     <>
       <SeoHead
         title="Contact Crescent Car Rental | Call, WhatsApp & Email"
-        description="Contact Crescent Car Rental in Lahore — call +92 300 6277997, chat on WhatsApp or send a booking enquiry. DHA Phase 1 office, open 24/7."
+        description="Contact Crescent Car Rental in Lahore — call +92 308 7923041, chat on WhatsApp or send a booking enquiry. DHA Phase 1 office, open 24/7."
         keywords="contact car rental Lahore, rent a car phone number, crescent car rental WhatsApp, DHA Lahore car rental"
         structuredData={{
           '@context': 'https://schema.org',

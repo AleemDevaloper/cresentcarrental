@@ -102,7 +102,7 @@ class DatabaseSeeder extends Seeder
         Review::updateOrCreate(['customer_name'=>'Mariam K.'], ['rating'=>5,'review'=>'The rental experience felt professional and straightforward, especially for a longer trip.','location'=>'Islamabad','status'=>'active','sort_order'=>2]);
 
         $settings = [
-            'business_name'=>'Crescent Car Rental','phone'=>'+92 300 6277997','whatsapp'=>'923006277997','email'=>'info@crescentrentacar.com','website'=>'https://crescentrentacar.com','currency'=>'PKR','tagline'=>'Drive Your Next Story.'
+            'business_name'=>'Crescent Car Rental','phone'=>'+92 308 7923041','whatsapp'=>'923087923041','email'=>'info@crescentrentacar.com','website'=>'https://crescentrentacar.com','currency'=>'PKR','tagline'=>'Drive Your Next Story.'
         ];
         foreach ($settings as $key=>$value) WebsiteSetting::updateOrCreate(['key'=>$key], ['value'=>$value,'group'=>'general','is_public'=>true]);
 

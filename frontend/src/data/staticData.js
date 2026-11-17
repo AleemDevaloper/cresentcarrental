@@ -195,9 +195,9 @@ export const vehicleFeatures = featureSet.map((name, index) => ({ id: index + 1,
 
 export const settings = {
   business_name: 'Crescent Car Rental',
-  phone: '+92 300 6277997',
+  phone: '+92 308 7923041',
   email: 'info@crescentrentacar.com',
-  whatsapp: '923006277997',
+  whatsapp: '923087923041',
   address: 'DHA Phase 1, Block H, Commercial Area, Lahore, Pakistan',
   currency: 'PKR',
   business_hours: 'Open 24/7',

@@ -1,0 +1,16 @@
+import{j as s}from"./motion-DS_c4SUV.js";import{L as d}from"./react-CdbXl9s9.js";import{c as a,U as l,l as x,B as o,b as m}from"./index-7nmed8JF.js";import{S as p}from"./SmartImage-BO2nu0kV.js";/**
+ * @license lucide-react v0.468.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const u=a("Fuel",[["line",{x1:"3",x2:"15",y1:"22",y2:"22",key:"xegly4"}],["line",{x1:"4",x2:"14",y1:"9",y2:"9",key:"xcnuvu"}],["path",{d:"M14 22V4a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v18",key:"16j0yd"}],["path",{d:"M14 13h2a2 2 0 0 1 2 2v2a2 2 0 0 0 2 2a2 2 0 0 0 2-2V9.83a2 2 0 0 0-.59-1.42L18 5",key:"7cu91f"}]]);/**
+ * @license lucide-react v0.468.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const y=a("Gauge",[["path",{d:"m12 14 4-4",key:"9kzdfg"}],["path",{d:"M3.34 19a10 10 0 1 1 17.32 0",key:"19p75a"}]]);/**
+ * @license lucide-react v0.468.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const h=a("Settings2",[["path",{d:"M20 7h-9",key:"3s1dr2"}],["path",{d:"M14 17H5",key:"gfn3mx"}],["circle",{cx:"17",cy:"17",r:"3",key:"18b49y"}],["circle",{cx:"7",cy:"7",r:"3",key:"dfmy0x"}]]);function j(e){return`${m.currency} ${Number(e||0).toLocaleString()}`}const r=["assets/fleet/hero-sedan.webp","assets/fleet/luxury-sedan.webp","assets/fleet/luxury-suv.webp","assets/fleet/sports-coupe.webp","assets/fleet/luxury-suv.webp","assets/fleet/executive-sedan.webp","assets/fleet/sports-car.webp","assets/fleet/executive-drive.webp"];function g(e){const i=[...String(e.slug||e.name||e.id||"crescent")].reduce((n,c)=>n+c.charCodeAt(0),0)%r.length;return r[i]}function v({vehicle:e}){const t=e.main_image_url||e.main_image||g(e);return s.jsxs("article",{className:"vehicle-card",children:[s.jsxs("div",{className:"vehicle-card-media",children:[s.jsx(p,{src:t,alt:e.name||"Rental vehicle",width:640,height:404,sizes:"(max-width: 640px) 100vw, (max-width: 1100px) 50vw, 360px"}),e.featured&&s.jsx("span",{className:"vehicle-badge",children:"Featured"})]}),s.jsxs("div",{className:"vehicle-card-body",children:[s.jsxs("div",{className:"vehicle-card-title",children:[s.jsxs("div",{children:[s.jsx("span",{children:e.category?.name||e.category||"Premium"}),s.jsx("h3",{children:e.name})]}),s.jsxs("div",{className:"vehicle-price",children:[s.jsx("strong",{children:j(e.daily_price)}),s.jsx("small",{children:"/ day"})]})]}),s.jsxs("div",{className:"vehicle-specs",children:[s.jsxs("span",{children:[s.jsx(l,{size:15}),e.seats||5," Seats"]}),s.jsxs("span",{children:[s.jsx(h,{size:15}),e.transmission||"Automatic"]}),s.jsxs("span",{children:[s.jsx(u,{size:15}),e.fuel_type||"Petrol"]}),s.jsxs("span",{children:[s.jsx(y,{size:15}),e.mileage_policy||"Standard"]})]}),s.jsxs("div",{className:"vehicle-card-actions",children:[s.jsxs(d,{className:"text-link",to:`/cars/${e.slug||e.id}`,children:["View details ",s.jsx(x,{size:16})]}),s.jsx(o,{as:"link",to:`/book?vehicle=${e.id}`,variant:"outline-dark",size:"sm",children:"Book this car"})]})]})]})}export{u as F,y as G,h as S,v as V};
